@@ -19,14 +19,14 @@ defineProps<{
       <Dialog.Trigger asChild>
         <Tooltip.Trigger><slot name="trigger" /></Tooltip.Trigger>
       </Dialog.Trigger>
-      <Teleport to="body">
+      <Teleport to="#ui-canvas">
         <Tooltip.Positioner>
           <Tooltip.Content>{{ tooltip }}</Tooltip.Content>
         </Tooltip.Positioner>
       </Teleport>
     </Tooltip.Root>
 
-    <Teleport to="body">
+    <Teleport to="#ui-canvas">
       <Dialog.Backdrop class="fixed top-0 bg-black/40 w-full h-full backdrop-blur-md" />
       <Dialog.Positioner
         class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center"

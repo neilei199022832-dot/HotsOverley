@@ -1,6 +1,9 @@
 import './index.css'
 import 'virtual:uno.css'
 import { initThemes } from '@/composables/useTheme'
+import { initUiScale } from '@/composables/useUiScale'
+
+initUiScale()
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'

@@ -97,8 +97,10 @@ const isTankAvailable = () => turn.value === 1 ? team.value.filter((h) => h.role
 </script>
 <template>
   
-  <BaseFormInput name="query"/>
-  <div class="flex gap-0">
+  <div class="shrink-0 w-full">
+    <BaseFormInput name="query"/>
+  </div>
+  <div class="flex gap-0 shrink-0">
     <BaseTooltip v-for="[mapName,icon] in Object.entries(iconByMapName)" :key="mapName">
       <img class="border-3 border-gray-500 cursor-pointer" :class="{ 'border-orange-400': selectedMap === mapName }" :src="icon" alt=""  @click="selectedMap = mapName as MapNames" />
       <template #content>
@@ -109,16 +111,16 @@ const isTankAvailable = () => turn.value === 1 ? team.value.filter((h) => h.role
 
   </div>
   <HeroPool v-model:team="team" v-model:enemyTeam="enemyTeam" v-model:turn="turn" v-model:bans="bans" :selected-map="selectedMap" />
-  <div class="w-full h-full flex p-2 py-0 flex-col  gap-2">
+  <div class="w-full flex-1 min-h-0 flex p-2 py-0 flex-col gap-2">
 
     
     <!-- <div> -->
-      <div class="flex flex-row gap-2  overflow-x-scroll max-w-full ">
-        <div v-for="(category,index) in group(heroes, h => h.role)" :key="index" class="min-w-[420px]  rounded-3xl bg-gray-700/80 pr-3 pb-5 max-h-1000px tansition-all duration-500 ease-in-out"
+      <div class="flex flex-row gap-2 overflow-x-auto max-w-full h-full min-h-0">
+        <div v-for="(category,index) in group(heroes, h => h.role)" :key="index" class="min-w-[420px] flex-1 rounded-3xl bg-gray-700/80 pr-3 pb-5 max-h-full h-full min-h-0 flex flex-col tansition-all duration-500 ease-in-out"
         :class="{'pointer-events-none op-30': category![0].role === roles.Support && !isSupportAvailable() || category![0].role === roles.Tank && !isTankAvailable() || category![0].role === roles.Healer && !isHealerAvailable()}"
         >
-          <div class="text-12 font-500 pl-5">{{ category![0].role }}</div>
-          <BaseScroll height="600px">
+          <div class="text-12 font-500 pl-5 shrink-0">{{ category![0].role }}</div>
+          <BaseScroll height="100%">
           
           
         <div class="flex flex-wrap gap-7 w-full items-center justify-center relative pt-4"

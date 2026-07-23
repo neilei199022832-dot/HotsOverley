@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import AppLayout from "@/layouts/AppLayout.vue";
+import AppLayout from '@/layouts/AppLayout.vue'
 </script>
 
 <template>
-  
-  <AppLayout>
-    <RouterView />
-  </AppLayout>
+  <div class="ui-viewport">
+    <div id="ui-canvas" class="ui-canvas">
+      <AppLayout>
+        <RouterView />
+      </AppLayout>
+    </div>
+  </div>
 </template>
-

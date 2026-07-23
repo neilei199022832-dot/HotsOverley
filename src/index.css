@@ -6,6 +6,11 @@
 /* #62748E */
 
 :root {
+  /* Design baseline: 2K. --ui-scale is set from JS (window size / 2560×1440). */
+  --design-width: 2560px;
+  --design-height: 1440px;
+  --ui-scale: 1;
+
   --color-surface: #90a1b9;
   --color-surface-hover: #e2e8f0;
   --color-surface-active: #dbeafe;
@@ -30,6 +35,12 @@
   --p-dialog-color: var(--color-content) !important;
 
   /* --p-surface-100 */
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 [data-theme='dark'],
@@ -174,17 +185,42 @@
 }
 
 body {
-  height: 100vh;
-  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   margin: 0;
   background: grey;
 }
 
 #app {
-  margin: 0 auto;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   font-weight: normal;
+  overflow: hidden;
+}
+
+/* Real viewport: only the scaled canvas is visible. */
+.ui-viewport {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/*
+  Fixed 2K canvas. zoom shrinks layout + paint together so nothing is clipped —
+  at 1920 → 0.75, at 1600 → 0.625, etc.
+*/
+.ui-canvas {
+  width: var(--design-width);
+  height: var(--design-height);
+  flex-shrink: 0;
+  overflow: hidden;
+  zoom: var(--ui-scale);
+  display: flex;
+  flex-direction: column;
 }
 
 a,

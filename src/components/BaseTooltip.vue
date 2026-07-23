@@ -21,7 +21,7 @@ const onEnter = async() => {
   <OnClickOutside @trigger="onClose" >
     <Popover.Root  :open="open" :lazy-mount="true" :unmount-on-exit="true">
     <Popover.Trigger @contextmenu.prevent @click.left="onClose" @click.right="onEnter" class="Trigger"><slot></slot></Popover.Trigger>
-    <Teleport to="body">
+    <Teleport to="#ui-canvas">
       <Popover.Positioner>
         <Popover.Content  class="max-w-600px p-4 rounded-2xl backdrop-blur-xs bg-gray-500/90"><slot name="content" /></Popover.Content>
       </Popover.Positioner>

@@ -8,7 +8,11 @@ defineProps<{
 </script>
 
 <template>
-  <ScrollArea.Root :style="{height: height}">
+  <ScrollArea.Root
+    class="min-h-0"
+    :class="height === '100%' ? 'flex-1 h-full' : undefined"
+    :style="height === '100%' ? undefined : { height }"
+  >
     <ScrollArea.Viewport class="Viewport">
       <ScrollArea.Content>
         <slot />
