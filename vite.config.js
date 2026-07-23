@@ -11,7 +11,6 @@ export default defineConfig(({ mode }) => {
         // ? Настройки самопроксирования, врубить по надобности на проекте
         server: {
             port: 5173,
-    
         },
         build: {
             rollupOptions: {
@@ -27,6 +26,7 @@ export default defineConfig(({ mode }) => {
             }
         },
         plugins: [vue(), UnoCSS(unoConfig)],
+         base: '/HotsOverley/'
         optimizeDeps: {
             include: ['maplibre-gl']
         }
