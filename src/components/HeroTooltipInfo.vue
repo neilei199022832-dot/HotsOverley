@@ -7,7 +7,7 @@ defineProps<{
         hero:Hero,
         team:Hero[],
         bans:Hero[],
-        selectedMap:MapNames,
+        selectedMap?:MapNames,
         enemyTeam:Hero[],
 }>()
 const getHeroByName = (name:string) => {
@@ -19,9 +19,15 @@ const getHeroByName = (name:string) => {
         <BaseScroll height="600px">
             <div class="pl-3">
             <div class="flex flex-col gap-4">
-              <h1 class="text-2xl font-500"> Союзники</h1>
+              <h1 class="text-2xl font-500">Союзники для героя</h1>
               <div div class="flex gap-x-14 gap-y-6 flex-wrap">
                 <BaseHeroIcon v-for="item in hero.friendHeroes" :hero="getHeroByName(item)" :team="team" :enemyTeam="enemyTeam" :bans="bans" :selected-map="selectedMap" />
+              </div>
+            </div>
+             <div class="flex flex-col gap-4">
+              <h1 class="text-2xl font-500">Полезен для:</h1>
+              <div div class="flex gap-x-14 gap-y-6 flex-wrap">
+                <BaseHeroIcon v-for="item in hero.addictedHeroes" :hero="getHeroByName(item)" :team="team" :enemyTeam="enemyTeam" :bans="bans" :selected-map="selectedMap" />
               </div>
             </div>
             <div class="flex flex-col gap-4">

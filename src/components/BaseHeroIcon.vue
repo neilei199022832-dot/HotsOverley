@@ -8,7 +8,7 @@ const props = defineProps<{
     hero:Hero,
     team:Hero[],
     bans:Hero[],
-    selectedMap:MapNames,
+    selectedMap?:MapNames,
     enemyTeam:Hero[],
     query?:string
     hideProgress?:boolean

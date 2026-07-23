@@ -17,7 +17,7 @@ import HeroTooltipInfo from '@/components/HeroTooltipInfo.vue';
 
 const team = ref<Hero[]>([])
 const bans = ref<Hero[]>([])
-const selectedMap = ref<MapNames>(MapNames.AlteracPass)
+const selectedMap = ref<MapNames>()
 const enemyTeam = ref<Hero[]>([])
 const turn = ref<1 | 2 | 3>(1)
 

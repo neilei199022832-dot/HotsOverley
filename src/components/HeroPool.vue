@@ -7,7 +7,7 @@ import BaseHeroIcon from '@/components/BaseHeroIcon.vue';
 import HeroTooltipInfo from './HeroTooltipInfo.vue';
 
 defineProps<{
-  selectedMap:MapNames,
+  selectedMap?:MapNames,
 }>()
 
 const turn = defineModel<1 | 2 | 3>('turn', { default: 1 })

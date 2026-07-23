@@ -357,6 +357,7 @@ export type Hero = {
   goodMaps?: MapNames[]
   badMaps?: MapNames[]
   vulnerableHeroes?: HeroNames[]
+  addictedHeroes?: HeroNames[]
 }
 
 export const healers: Hero[] = [
