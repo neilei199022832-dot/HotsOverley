@@ -1,0 +1,227 @@
+@import '@vue-flow/core/dist/theme-default.css';
+@import '@vue-flow/core/dist/style.css';
+
+/* #cad5e2 */
+/* #90a1b9 */
+/* #62748E */
+
+:root {
+  --color-surface: #90a1b9;
+  --color-surface-hover: #e2e8f0;
+  --color-surface-active: #dbeafe;
+  --color-surface-muted: #dbeafe;
+  --color-surface-solid: #62748e;
+  --color-surface-elevated: #90a1b9;
+
+  --color-content: #1e293b;
+  --color-content-secondary: #475569;
+  --color-content-tertiary: #94a3b8;
+  --color-content-inverse: #ffffff;
+
+  --color-border: #bfdbfe;
+  --color-border-focus: #3b82f6;
+
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-primary-muted: #dbeafe;
+
+  --p-overlay-modal-background: var(--color-surface-elevated) !important;
+  --p-dialog-title: var(--color-content) !important;
+  --p-dialog-color: var(--color-content) !important;
+
+  /* --p-surface-100 */
+}
+
+[data-theme='dark'],
+.dark {
+  --color-surface: #1e293b;
+  --color-surface-hover: #334155;
+  --color-surface-active: #475569;
+  --color-surface-muted: #334155;
+  --color-surface-solid: #0f172a;
+  --color-surface-elevated: #1e293b;
+
+  --color-content: #f1f5f9;
+  --color-content-secondary: #cbd5e1;
+  --color-content-tertiary: #64748b;
+  --color-content-inverse: #0f172a;
+
+  --color-border: #334155;
+  --color-border-focus: #60a5fa;
+
+  --color-primary: #60a5fa;
+  --color-primary-hover: #3b82f6;
+  --color-primary-muted: #1e3a5f;
+}
+
+:root,
+[data-theme='light'] {
+  --p-button-bg: #1e3a8a !important;
+  --p-button-hover-bg: #1e40af !important;
+  --p-badge-success-background: #ffffff !important;
+  --p-primary-color: #ffffff !important;
+
+  --p-button-primary-border-color: #000000 !important;
+  --p-button-primary-hover-border-color: #000000 !important;
+  --p-button-primary-active-border-color: #000000 !important;
+  --p-button-primary-color: #ffffff !important;
+  --p-button-primary-background: #13e1e8 !important;
+  --p-button-primary-hover-color: #ffffff !important;
+  --p-button-primary-hover-background: #11c5d1 !important;
+  --p-primary-color-hover: #ffffff !important;
+  --p-button-primary-active-color: #ffffff !important;
+  --p-button-primary-active-background: #0eaab9 !important;
+  --p-primary-color-active: #ffffff !important;
+
+  --p-button-contrast-border-color: #ffffff !important;
+  --p-button-contrast-hover-border-color: #e0e0e0 !important;
+  --p-button-contrast-active-border-color: #bfbfbf !important;
+  --p-button-contrast-color: #000000 !important;
+  --p-button-contrast-background: #ffffff !important;
+  --p-button-contrast-hover-color: #000000 !important;
+  --p-button-contrast-hover-background: #e0e0e0 !important;
+  --p-contrast-color-hover: #000000 !important;
+  --p-button-contrast-active-color: #000000 !important;
+  --p-button-contrast-active-background: #bfbfbf !important;
+  --p-contrast-color-active: #000000 !important;
+
+  --p-button-secondary-border-color: #6c757d !important;
+  --p-button-secondary-hover-border-color: #5a6268 !important;
+  --p-button-secondary-active-border-color: #4e555b !important;
+  --p-button-secondary-color: #ffffff !important;
+  --p-button-secondary-background: #6c757d !important;
+  --p-button-secondary-hover-color: #ffffff !important;
+  --p-button-secondary-hover-background: #5a6268 !important;
+  --p-secondary-color-hover: #ffffff !important;
+  --p-button-secondary-active-color: #ffffff !important;
+  --p-button-secondary-active-background: #4e555b !important;
+  --p-secondary-color-active: #ffffff !important;
+
+  --p-button-info-border-color: #5d98ff !important;
+  --p-button-info-hover-border-color: #4c7cd4 !important;
+  --p-button-info-active-border-color: #3b63aa !important;
+  --p-button-info-color: #ffffff !important;
+  --p-button-info-background: #5d98ff !important;
+  --p-button-info-hover-color: #ffffff !important;
+  --p-button-info-hover-background: #4c7cd4 !important;
+  --p-info-color-hover: #ffffff !important;
+  --p-button-info-active-color: #ffffff !important;
+  --p-button-info-active-background: #3b63aa !important;
+  --p-info-color-active: #ffffff !important;
+
+  --p-button-success-border-color: #000000 !important;
+  --p-button-success-hover-border-color: #000000 !important;
+  --p-button-success-active-border-color: #000000 !important;
+  --p-button-success-color: #ffffff !important;
+  --p-button-success-background: #000000 !important;
+  --p-button-success-hover-color: #ffffff !important;
+  --p-button-success-hover-background: #333333 !important;
+  --p-success-color-hover: #ffffff !important;
+  --p-button-success-active-color: #ffffff !important;
+  --p-button-success-active-background: #1a1a1a !important;
+  --p-success-color-active: #ffffff !important;
+
+  --p-button-warn-border-color: #ffc107 !important;
+  --p-button-warn-hover-border-color: #e0a800 !important;
+  --p-button-warn-active-border-color: #c69500 !important;
+  --p-button-warn-color: #000000 !important;
+  --p-button-warn-background: #ffc107 !important;
+  --p-button-warn-hover-color: #000000 !important;
+  --p-button-warn-hover-background: #e0a800 !important;
+  --p-warn-color-hover: #000000 !important;
+  --p-button-warn-active-color: #000000 !important;
+  --p-button-warn-active-background: #c69500 !important;
+  --p-warn-color-active: #000000 !important;
+
+  --p-button-help-border-color: #28a745 !important;
+  --p-button-help-hover-border-color: #218838 !important;
+  --p-button-help-active-border-color: #1e7e34 !important;
+  --p-button-help-color: #ffffff !important;
+  --p-button-help-background: #28a745 !important;
+  --p-button-help-hover-color: #ffffff !important;
+  --p-button-help-hover-background: #218838 !important;
+  --p-help-color-hover: #ffffff !important;
+  --p-button-help-active-color: #ffffff !important;
+  --p-button-help-active-background: #1e7e34 !important;
+  --p-help-color-active: #ffffff !important;
+
+  --p-button-danger-border-color: #910d08 !important;
+  --p-button-danger-hover-border-color: #750a06 !important;
+  --p-button-danger-active-border-color: #5a0804 !important;
+  --p-button-danger-color: #ffffff !important;
+  --p-button-danger-background: #910d08 !important;
+  --p-button-danger-hover-color: #ffffff !important;
+  --p-button-danger-hover-background: #750a06 !important;
+  --p-danger-color-hover: #ffffff !important;
+  --p-button-danger-active-color: #ffffff !important;
+  --p-button-danger-active-background: #5a0804 !important;
+  --p-danger-color-active: #ffffff !important;
+
+  --p-megamenu-color: #ffffff !important;
+  --p-megamenu-item-active-color: #ffffff !important;
+  --p-megamenu-item-color: #ffffff !important;
+
+  --p-card-background: var(--color-surface-elevated) !important;
+
+  --p-divider-border-color: var(--color-border) !important;
+
+  --p-skeleton-animation-background: var(--color-surface-muted) !important;
+  --p-skeleton-background: var(--color-surface) !important;
+}
+
+.p-button {
+  transition: 0.5s ease-in-out !important;
+}
+
+body {
+  height: 100vh;
+  overflow-y: auto;
+  margin: 0;
+  background: grey;
+}
+
+#app {
+  margin: 0 auto;
+  width: 100%;
+  min-height: 100%;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsl(0, 0%, 99%);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(0, 0%, 100%, 0.2);
+  }
+}
+
+/* Hide scrollbar but allow scrolling */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar for webkit */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-surface);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-focus);
+}
