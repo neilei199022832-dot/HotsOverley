@@ -4,6 +4,7 @@ import AppLayout from "@/layouts/AppLayout.vue";
 </script>
 
 <template>
+  <div class="bg-red text-blue">1</div>
   <AppLayout>
     <RouterView />
   </AppLayout>
