@@ -11,13 +11,7 @@ export default defineConfig(({ mode }) => {
         // ? Настройки самопроксирования, врубить по надобности на проекте
         server: {
             port: 5173,
-            proxy: {
-                '/': {
-                    target: env.VITE_BACKEND_URL,
-                    changeOrigin: true,
-                    secure: false
-                }
-            }
+    
         },
         build: {
             rollupOptions: {
