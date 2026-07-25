@@ -42,9 +42,9 @@ const baseClass= 'max-w-300px min-w-300px  h-fit flex flex-col flex items-center
         
     <img class="w-78 h-78 rounded-t-8" :src="iconByName[hero.name]" alt=""  />
     <h1 class="text-xl text-center w-full border-b-3 border-gray-500">{{ hero.name }}</h1>
-    <div class="flex grid grid-cols-4 gap-2 p-2 w-full">
+    <div class="grid grid-cols-4 gap-2 p-1 w-full">
           <BaseTooltip v-for="[skillName,icon] in Object.entries(iconBySkillName)" :key="skillName">
-      <img class="border-3 w-18 border-gray-500 cursor-pointer" :class="{ 'border-orange-400': hero?.skills?.includes(skillName as SkilsNames) }" :src="icon" alt=""  @click="toggleSkill(skillName as SkilsNames)" />
+      <img class="border-3 !min-w-12 border-gray-500 cursor-pointer" :class="{ 'border-orange-400': hero?.skills?.includes(skillName as SkilsNames) }" :src="icon" alt=""  @click="toggleSkill(skillName as SkilsNames)" />
       <template #content>
         {{ skillName }}
       </template>
