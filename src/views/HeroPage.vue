@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import router from '@/router';
 import { useAppStore } from '@/stores/app';
+import BaseTooltip from '@/components/BaseTooltip.vue';
 import {  iconByMapName, iconByName, iconBySkillName, SkilsNames } from '@/utils/mockData';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
