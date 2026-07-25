@@ -1,9 +1,45 @@
 import { defineStore } from 'pinia'
 import {  ref } from 'vue'
-import {  unique } from 'radash'
+
 import { allHeroes, HeroNames, MapNames, type Hero } from '@/utils/mockData'
+import { useClipboard } from '@vueuse/core'
+
 
 export const useAppStore = defineStore('app', () => {
+
+  const copyData = () => {
+    useClipboard().copy(JSON.stringify(heroes.value))
+  }
+
+  const setDataFromClickBoard = async() => {
+    try {
+       const data = await navigator.clipboard.readText()
+       if(!data) return
+       heroes.value = JSON.parse(data)
+       setDataToLocalStorage()
+    } catch (error) {
+      console.log(error)
+    }
+
+    }
+
+    const removeLocalStorage = () => {
+      localStorage.removeItem('heroes')
+      init()
+    }
+  
+
+  const getDataFromLocalStorage = () => {
+    const data = localStorage.getItem('heroes')
+    if (data) {
+      return JSON.parse(data)
+    }
+  }
+
+  const setDataToLocalStorage = () => {
+    localStorage.setItem('heroes', JSON.stringify(heroes.value))
+  }
+
 
   const setVulnerableHeroes = () => {
   return allHeroes.map(hero => {
@@ -11,6 +47,7 @@ export const useAppStore = defineStore('app', () => {
     
     const addictedHeroes:HeroNames[] = []
     allHeroes.forEach(h => {
+
 
       if (h.enemyHeroes?.includes(hero.name)) {
 
@@ -33,8 +70,14 @@ export const useAppStore = defineStore('app', () => {
 
   const heroes = ref<Hero[]>([])
  const init = () => {
+  const data = getDataFromLocalStorage()
+  if(data) {
+    heroes.value = data
+  }else {
     heroes.value = setVulnerableHeroes()
-    console.log(heroes.value)
+    setDataToLocalStorage()
+  }
+    
  }
 
  //max 4 min 0
@@ -77,5 +120,5 @@ const getPickRate = (team: Hero[], enemy: Hero[], hero: Hero, selectedMap?: MapN
 
 init()
 
-  return { heroes,getPickRate }
+  return { heroes,getPickRate,setDataToLocalStorage,removeLocalStorage,setDataFromClickBoard,copyData }
 })

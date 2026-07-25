@@ -14,6 +14,8 @@ import BaseHeroIcon from '@/components/BaseHeroIcon.vue';
 import BaseScroll from '@/components/BaseScroll.vue';
 import { useMagicKeys, whenever } from '@vueuse/core';
 import HeroTooltipInfo from '@/components/HeroTooltipInfo.vue';
+import router from '@/router';
+import { RouteName } from '@/models/RouteName';
 
 const team = ref<Hero[]>([])
 const bans = ref<Hero[]>([])
@@ -135,7 +137,9 @@ const isTankAvailable = () => turn.value === 1 ? team.value.filter((h) => h.role
         })
       
 
-        " @click="!team.includes(hero) && !enemyTeam.includes(hero) &&  onSelectHero(hero)">
+        " @click.left="!team.includes(hero) && !enemyTeam.includes(hero) &&  onSelectHero(hero)"
+        @click.middle="router.push({ name: RouteName.HeroPage, params: { heroName: hero.name } })"
+        >
             <BaseTooltip>
               <BaseHeroIcon :hero="hero" :team="team" :enemyTeam="enemyTeam" :bans="bans" :query="value" :selected-map="selectedMap"/>
          

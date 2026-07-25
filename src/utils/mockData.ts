@@ -110,6 +110,49 @@ import BattelfieldOfEternity from '@/assets/map/BattelfieldOfEternity.jpg'
 import BarxisHoldout from '@/assets/map/BarxisHoldout.jpg'
 import TombOfTheSpiderQueen from '@/assets/map/TombOfTheSpiderQueen.jpg'
 
+import HighHp from '@/assets/skills/HighHp.png'
+import AutoAtakDanage  from '@/assets/skills/AutoAtakDanage.png'
+import ProcentDamgae from '@/assets/skills/ProcentDamgae.png'
+import Blind from '@/assets/skills/Blind.png'
+import AttackSpeedBoost from '@/assets/skills/AttackSpeedBoost.png'
+import HighMobil from '@/assets/skills/HighMobil.png'
+import EnergoShield from '@/assets/skills/EnergoShield.png'
+import PhhisicArmor from '@/assets/skills/PhhisicArmor.png'
+import MagicArmor from '@/assets/skills/MagicArmor.png'
+import Shield from '@/assets/skills/Shield.png'
+import ShieldBraker from '@/assets/skills/ShieldBraker.png'
+import Silence from '@/assets/skills/Silence.png'
+import AoE from '@/assets/skills/AoE.png'
+import AntiHeal from '@/assets/skills/AntiHeal.png'
+import DoT from '@/assets/skills/DoT.png'
+import Cleanse from '@/assets/skills/Cleanse.png'
+import VaweClear from '@/assets/skills/VaweClear.png'
+import Deceleration from '@/assets/skills/Deceleration.png'
+import Taunt from '@/assets/skills/Taunt.png'
+import LongCastAbility from '@/assets/skills/LongCastAbility.png'
+import Summon from '@/assets/skills/Summon.png'
+import FastHeal from '@/assets/skills/FastHeal.png'
+import GroupHeal from '@/assets/skills/GroupHeal.png'
+import Invisible from '@/assets/skills/Invisible.png'
+import TargetFocus from '@/assets/skills/TargetFocus.png'
+import GroupFocus from '@/assets/skills/GroupFocus.png'
+import MagicBurst from '@/assets/skills/MagicBurst.png'
+import Scaut from '@/assets/skills/Scaut.png'
+import Pouk from '@/assets/skills/Pouk.png'
+import SplitPush from '@/assets/skills/SplitPush.png'
+import Stun from '@/assets/skills/Stun.png'
+import Root from '@/assets/skills/Root.png'
+import Knockback from '@/assets/skills/Knockback.png'
+import Pull from '@/assets/skills/Pull.png'
+import ArmorReduction from '@/assets/skills/ArmorReduction.png'
+import Vulnerability from '@/assets/skills/Vulnerability.png'
+import Unstoppable from '@/assets/skills/Unstoppable.png'
+import SpellShield from '@/assets/skills/SpellShield.png'
+import HealOverTime from '@/assets/skills/HealOverTime.png'
+import Revive from '@/assets/skills/Revive.png'
+import Teleport from '@/assets/skills/Teleport.png'
+
+
 
 export enum MapNames {
   AlteracPass ='Альтеракский перевал',
@@ -127,6 +170,387 @@ export enum MapNames {
   BarxisHoldout = 'Бойня на Браксисе',
   TombOfTheSpiderQueen = 'Гробница королевы пауков',
 }
+
+export enum SkilsNames {
+  HighHp = 'Высокое здоровье',
+  ProcentDamgae = 'Процентный урон',
+  AutoAtakDanage = 'Урон от автоатаки',
+  Blind = 'Слепота',
+  AttackSpeedBoost = 'Увеличение скорости атаки',
+  HighMobil = 'Высокая мобильность',
+  EnergoShield = 'Энергетический щит',
+  PhhisicArmor = 'Физическая броня',
+  MagicArmor = 'Магическая броня',
+  Shield = 'Щит',
+  ShieldBraker = 'Разрушение щита',
+  Silence = 'Безмолвие',
+  AoE = 'Урон по площади',
+  AntiHeal = 'Антилечение',
+  DoT = 'Периодический урон',
+  Cleanse = 'Очищение', // было 'Неудерживаемость' – исправил
+  VaweClear = 'Быстрый вейвклир',
+  Deceleration = 'Замедление',
+  Taunt = 'Провокация',
+  LongCastAbility = 'Поддерживаемые способности',
+  Summon = 'Плотная группа / Иллюзии / Саммоны',
+  FastHeal = 'Быстрое лечение',
+  GroupHeal = 'Лечение группы',
+  Invisible = 'Невидимость',
+  TargetFocus = 'Точечный фокус',
+  GroupFocus = 'Групповой фокус',
+  MagicBurst = 'Магический бёрст',
+  Scaut = 'Разведка',
+  Pouk = 'Дальнобойный обстрел',
+  SplitPush = 'Сплит-пуш',
+  Stun = 'Оглушение',
+  Root = 'Обездвиживание',
+  Knockback = 'Отбрасывание',
+  Pull = 'Притягивание',
+  ArmorReduction = 'Снижение брони',
+  Vulnerability = 'Уязвимость',
+  Unstoppable = 'Неудержимость',
+  SpellShield = 'Магический щит',
+  HealOverTime = 'Периодическое лечение',
+  Revive = 'Воскрешение',
+  Teleport = 'Телепортация',
+}
+
+export const skillMap: Record<
+  SkilsNames,
+  { sinargy: SkilsNames[]; counter: SkilsNames[] }
+> = {
+  [SkilsNames.HighHp]: {
+    sinargy: [
+      SkilsNames.FastHeal,
+      SkilsNames.GroupHeal,
+      SkilsNames.HealOverTime,
+      SkilsNames.Shield,
+      SkilsNames.EnergoShield,
+      SkilsNames.PhhisicArmor,
+      SkilsNames.MagicArmor,
+    ],
+    counter: [
+      SkilsNames.ProcentDamgae,
+      SkilsNames.AntiHeal,
+      SkilsNames.ArmorReduction,
+      SkilsNames.Vulnerability,
+    ],
+  },
+
+  [SkilsNames.ProcentDamgae]: {
+    sinargy: [
+      SkilsNames.AttackSpeedBoost,
+      SkilsNames.ArmorReduction,
+      SkilsNames.Vulnerability,
+      SkilsNames.Deceleration,
+    ],
+    counter: [
+      SkilsNames.Blind,
+      SkilsNames.HighMobil,
+      SkilsNames.Shield,
+      SkilsNames.SpellShield,
+    ],
+  },
+
+  [SkilsNames.AutoAtakDanage]: {
+    sinargy: [
+      SkilsNames.AttackSpeedBoost,
+      SkilsNames.ArmorReduction,
+      SkilsNames.Vulnerability,
+      SkilsNames.Stun,
+      SkilsNames.Deceleration,
+    ],
+    counter: [
+      SkilsNames.Blind,
+      SkilsNames.PhhisicArmor,
+      SkilsNames.Shield,
+      SkilsNames.HighMobil,
+    ],
+  },
+
+  [SkilsNames.Blind]: {
+    sinargy: [
+      SkilsNames.Stun,
+      SkilsNames.Root,
+      SkilsNames.Taunt,
+      SkilsNames.PhhisicArmor,
+    ],
+    counter: [SkilsNames.Cleanse, SkilsNames.HighMobil],
+  },
+
+  [SkilsNames.AttackSpeedBoost]: {
+    sinargy: [SkilsNames.AutoAtakDanage, SkilsNames.ProcentDamgae],
+    counter: [SkilsNames.Blind, SkilsNames.PhhisicArmor, SkilsNames.Shield],
+  },
+
+  [SkilsNames.HighMobil]: {
+    sinargy: [
+      SkilsNames.AutoAtakDanage,
+      SkilsNames.MagicBurst,
+      SkilsNames.Scaut,
+    ],
+    counter: [
+      SkilsNames.Stun,
+      SkilsNames.Root,
+      SkilsNames.Deceleration,
+      SkilsNames.Taunt,
+      SkilsNames.Pull,
+      SkilsNames.Knockback,
+    ],
+  },
+
+  [SkilsNames.EnergoShield]: {
+    sinargy: [SkilsNames.HighHp, SkilsNames.FastHeal],
+    counter: [SkilsNames.ShieldBraker, SkilsNames.MagicBurst],
+  },
+
+  [SkilsNames.PhhisicArmor]: {
+    sinargy: [SkilsNames.HighHp, SkilsNames.FastHeal, SkilsNames.HealOverTime],
+    counter: [
+      SkilsNames.ArmorReduction,
+      SkilsNames.ProcentDamgae,
+      SkilsNames.Vulnerability,
+    ],
+  },
+
+  [SkilsNames.MagicArmor]: {
+    sinargy: [SkilsNames.HighHp, SkilsNames.FastHeal],
+    counter: [
+      SkilsNames.ArmorReduction,
+      SkilsNames.ProcentDamgae,
+      SkilsNames.Vulnerability,
+    ],
+  },
+
+  [SkilsNames.Shield]: {
+    sinargy: [SkilsNames.HighHp, SkilsNames.FastHeal],
+    counter: [SkilsNames.ShieldBraker, SkilsNames.ProcentDamgae],
+  },
+
+  [SkilsNames.ShieldBraker]: {
+    sinargy: [
+      SkilsNames.AutoAtakDanage,
+      SkilsNames.MagicBurst,
+      SkilsNames.TargetFocus,
+    ],
+    counter: [SkilsNames.HighMobil],
+  },
+
+  [SkilsNames.Silence]: {
+    sinargy: [SkilsNames.LongCastAbility, SkilsNames.Stun],
+    counter: [SkilsNames.Cleanse, SkilsNames.HighMobil],
+  },
+
+  [SkilsNames.AoE]: {
+    sinargy: [
+      SkilsNames.Stun,
+      SkilsNames.Root,
+      SkilsNames.Deceleration,
+      SkilsNames.GroupFocus,
+    ],
+    counter: [
+      SkilsNames.HighMobil,
+      SkilsNames.Shield,
+      SkilsNames.MagicArmor,
+      SkilsNames.SpellShield,
+    ],
+  },
+
+  [SkilsNames.AntiHeal]: {
+    sinargy: [SkilsNames.MagicBurst, SkilsNames.DoT, SkilsNames.TargetFocus],
+    counter: [SkilsNames.Cleanse, SkilsNames.Shield],
+  },
+
+  [SkilsNames.DoT]: {
+    sinargy: [SkilsNames.Deceleration, SkilsNames.AntiHeal],
+    counter: [
+      SkilsNames.Cleanse,
+      SkilsNames.Shield,
+      SkilsNames.FastHeal,
+      SkilsNames.HighMobil,
+    ],
+  },
+
+  [SkilsNames.Cleanse]: {
+    sinargy: [SkilsNames.HighMobil, SkilsNames.LongCastAbility],
+    counter: [SkilsNames.Silence, SkilsNames.Stun],
+  },
+
+  [SkilsNames.VaweClear]: {
+    sinargy: [SkilsNames.SplitPush, SkilsNames.Scaut],
+    counter: [SkilsNames.Stun, SkilsNames.GroupFocus],
+  },
+
+  [SkilsNames.Deceleration]: {
+    sinargy: [
+      SkilsNames.AoE,
+      SkilsNames.MagicBurst,
+      SkilsNames.AutoAtakDanage,
+      SkilsNames.TargetFocus,
+    ],
+    counter: [SkilsNames.Cleanse, SkilsNames.Unstoppable, SkilsNames.HighMobil],
+  },
+
+  [SkilsNames.Taunt]: {
+    sinargy: [SkilsNames.AutoAtakDanage, SkilsNames.Stun],
+    counter: [SkilsNames.Cleanse, SkilsNames.Unstoppable, SkilsNames.HighMobil],
+  },
+
+  [SkilsNames.LongCastAbility]: {
+    sinargy: [SkilsNames.Unstoppable, SkilsNames.Shield, SkilsNames.Cleanse],
+    counter: [SkilsNames.Stun, SkilsNames.Silence, SkilsNames.Knockback, SkilsNames.Pull],
+  },
+
+  [SkilsNames.Summon]: {
+    sinargy: [SkilsNames.SplitPush, SkilsNames.GroupHeal],
+    counter: [SkilsNames.AoE, SkilsNames.VaweClear],
+  },
+
+  [SkilsNames.FastHeal]: {
+    sinargy: [
+      SkilsNames.HighHp,
+      SkilsNames.Shield,
+      SkilsNames.PhhisicArmor,
+      SkilsNames.MagicArmor,
+    ],
+    counter: [SkilsNames.AntiHeal, SkilsNames.DoT, SkilsNames.MagicBurst],
+  },
+
+  [SkilsNames.GroupHeal]: {
+    sinargy: [SkilsNames.GroupFocus, SkilsNames.HighHp],
+    counter: [SkilsNames.AntiHeal, SkilsNames.AoE, SkilsNames.Silence],
+  },
+
+  [SkilsNames.Invisible]: {
+    sinargy: [SkilsNames.Scaut, SkilsNames.TargetFocus],
+    counter: [SkilsNames.Scaut, SkilsNames.AoE],
+  },
+
+  [SkilsNames.TargetFocus]: {
+    sinargy: [
+      SkilsNames.ArmorReduction,
+      SkilsNames.Vulnerability,
+      SkilsNames.Stun,
+      SkilsNames.Deceleration,
+    ],
+    counter: [
+      SkilsNames.Shield,
+      SkilsNames.PhhisicArmor,
+      SkilsNames.MagicArmor,
+      SkilsNames.HighMobil,
+      SkilsNames.Cleanse,
+    ],
+  },
+
+  [SkilsNames.GroupFocus]: {
+    sinargy: [SkilsNames.AoE],
+    counter: [SkilsNames.GroupHeal, SkilsNames.Shield, SkilsNames.MagicArmor],
+  },
+
+  [SkilsNames.MagicBurst]: {
+    sinargy: [
+      SkilsNames.Stun,
+      SkilsNames.Vulnerability,
+      SkilsNames.ArmorReduction,
+      SkilsNames.AntiHeal,
+    ],
+    counter: [
+      SkilsNames.MagicArmor,
+      SkilsNames.SpellShield,
+      SkilsNames.Shield,
+      SkilsNames.HighMobil,
+    ],
+  },
+
+  [SkilsNames.Scaut]: {
+    sinargy: [SkilsNames.Invisible, SkilsNames.TargetFocus],
+    counter: [SkilsNames.Silence, SkilsNames.Stun],
+  },
+
+  [SkilsNames.Pouk]: {
+    sinargy: [SkilsNames.Deceleration],
+    counter: [
+      SkilsNames.HighMobil,
+      SkilsNames.Shield,
+      SkilsNames.FastHeal,
+      SkilsNames.PhhisicArmor,
+    ],
+  },
+
+  [SkilsNames.SplitPush]: {
+    sinargy: [SkilsNames.VaweClear, SkilsNames.Summon, SkilsNames.Teleport],
+    counter: [SkilsNames.GroupFocus, SkilsNames.Scaut, SkilsNames.HighMobil],
+  },
+
+  [SkilsNames.Stun]: {
+    sinargy: [
+      SkilsNames.MagicBurst,
+      SkilsNames.TargetFocus,
+      SkilsNames.AutoAtakDanage,
+      SkilsNames.AoE,
+    ],
+    counter: [SkilsNames.Unstoppable, SkilsNames.Cleanse],
+  },
+
+  [SkilsNames.Root]: {
+    sinargy: [SkilsNames.AoE, SkilsNames.MagicBurst, SkilsNames.TargetFocus],
+    counter: [SkilsNames.Unstoppable, SkilsNames.Cleanse],
+  },
+
+  [SkilsNames.Knockback]: {
+    sinargy: [],
+    counter: [SkilsNames.Unstoppable],
+  },
+
+  [SkilsNames.Pull]: {
+    sinargy: [SkilsNames.TargetFocus, SkilsNames.Stun],
+    counter: [SkilsNames.Unstoppable, SkilsNames.HighMobil],
+  },
+
+  [SkilsNames.ArmorReduction]: {
+    sinargy: [
+      SkilsNames.AutoAtakDanage,
+      SkilsNames.MagicBurst,
+      SkilsNames.TargetFocus,
+      SkilsNames.ProcentDamgae,
+    ],
+    counter: [SkilsNames.Cleanse],
+  },
+
+  [SkilsNames.Vulnerability]: {
+    sinargy: [
+      SkilsNames.AutoAtakDanage,
+      SkilsNames.MagicBurst,
+      SkilsNames.ProcentDamgae,
+    ],
+    counter: [SkilsNames.Cleanse, SkilsNames.Shield],
+  },
+
+  [SkilsNames.Unstoppable]: {
+    sinargy: [SkilsNames.LongCastAbility, SkilsNames.HighMobil],
+    counter: [SkilsNames.MagicBurst, SkilsNames.DoT, SkilsNames.AntiHeal],
+  },
+
+  [SkilsNames.SpellShield]: {
+    sinargy: [SkilsNames.HighHp, SkilsNames.FastHeal],
+    counter: [SkilsNames.AutoAtakDanage, SkilsNames.ShieldBraker],
+  },
+
+  [SkilsNames.HealOverTime]: {
+    sinargy: [SkilsNames.HighHp, SkilsNames.PhhisicArmor, SkilsNames.MagicArmor],
+    counter: [SkilsNames.AntiHeal, SkilsNames.DoT, SkilsNames.MagicBurst],
+  },
+
+  [SkilsNames.Revive]: {
+    sinargy: [SkilsNames.Shield, SkilsNames.FastHeal, SkilsNames.Cleanse],
+    counter: [SkilsNames.Silence, SkilsNames.Stun],
+  },
+
+  [SkilsNames.Teleport]: {
+    sinargy: [SkilsNames.SplitPush, SkilsNames.Scaut],
+    counter: [SkilsNames.Stun, SkilsNames.Silence, SkilsNames.Root],
+  },
+};
 
  export enum HeroNames {
   // Healers
@@ -242,8 +666,51 @@ export const iconByMapName: Record<MapNames, string> = {
   [MapNames.BattelfieldOfEternity]: BattelfieldOfEternity,
   [MapNames.BarxisHoldout]: BarxisHoldout,
   [MapNames.TombOfTheSpiderQueen]: TombOfTheSpiderQueen
-
 }
+
+export const iconBySkillName: Record<SkilsNames, string> = {
+  [SkilsNames.HighHp]: HighHp,
+  [SkilsNames.ProcentDamgae]: ProcentDamgae,
+  [SkilsNames.AutoAtakDanage]: AutoAtakDanage,
+  [SkilsNames.Blind]: Blind,
+  [SkilsNames.AttackSpeedBoost]: AttackSpeedBoost,
+  [SkilsNames.HighMobil]: HighMobil,
+  [SkilsNames.EnergoShield]: EnergoShield,
+  [SkilsNames.PhhisicArmor]: PhhisicArmor,
+  [SkilsNames.MagicArmor]: MagicArmor,
+  [SkilsNames.Shield]: Shield,
+  [SkilsNames.ShieldBraker]: ShieldBraker,
+  [SkilsNames.Silence]: Silence,
+  [SkilsNames.AoE]: AoE,
+  [SkilsNames.AntiHeal]: AntiHeal,
+  [SkilsNames.DoT]: DoT,
+  [SkilsNames.Cleanse]: Cleanse,
+  [SkilsNames.VaweClear]: VaweClear,
+  [SkilsNames.Deceleration]: Deceleration,
+  [SkilsNames.Taunt]: Taunt,
+  [SkilsNames.LongCastAbility]: LongCastAbility,
+  [SkilsNames.Summon]: Summon,
+  [SkilsNames.FastHeal]: FastHeal,
+  [SkilsNames.GroupHeal]: GroupHeal,
+  [SkilsNames.Invisible]: Invisible,
+  [SkilsNames.TargetFocus]: TargetFocus,
+  [SkilsNames.GroupFocus]: GroupFocus,
+  [SkilsNames.MagicBurst]: MagicBurst,
+  [SkilsNames.Scaut]: Scaut,
+  [SkilsNames.Pouk]: Pouk,
+  [SkilsNames.SplitPush]: SplitPush,
+  [SkilsNames.Stun]: Stun,
+  [SkilsNames.Root]: Root,
+  [SkilsNames.Knockback]: Knockback,
+  [SkilsNames.Pull]: Pull,
+  [SkilsNames.ArmorReduction]: ArmorReduction,
+  [SkilsNames.Vulnerability]: Vulnerability,
+  [SkilsNames.Unstoppable]: Unstoppable,
+  [SkilsNames.SpellShield]: SpellShield,
+  [SkilsNames.HealOverTime]: HealOverTime,
+  [SkilsNames.Revive]: Revive,
+  [SkilsNames.Teleport]: Teleport,
+};
 
 export const iconByName: Record<HeroNames, string> = {
   [HeroNames.Alextraza]: alextrazaIcon,
@@ -352,11 +819,12 @@ export enum roles {
 export type Hero = {
   name: HeroNames,
   role: roles
-  friendHeroes: HeroNames[]
+  friendHeroes:   HeroNames[]
   enemyHeroes: HeroNames[]
   goodMaps?: MapNames[]
   badMaps?: MapNames[]
   vulnerableHeroes?: HeroNames[]
+  skills: SkilsNames[]
   addictedHeroes?: HeroNames[]
 }
 
@@ -364,31 +832,34 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Alextraza,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Blaze, HeroNames.Kaelthas, HeroNames.Azmodan]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Blaze, HeroNames.Kaelthas, HeroNames.Azmodan]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Yrel, HeroNames.Junkrat, HeroNames.Sylvanas, HeroNames.Ana]),
     goodMaps:[MapNames.InfernalShrines],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BlackheartsBay,MapNames.BarxisHoldout,MapNames.HamuraTemple],
+    
   },
   {
     name: HeroNames.Ana,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.ETC, HeroNames.LiMing]),
+    friendHeroes:   ([HeroNames.ETC, HeroNames.LiMing]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Zeratul, HeroNames.Hanzo, HeroNames.Lucio]),
     goodMaps:[MapNames.HamuraTemple,MapNames.TombOfTheSpiderQueen,MapNames.TowersOfDoom],
     badMaps:[MapNames.BlackheartsBay,MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.SkyTemple,MapNames.WarheadJuction],
+    skills: [],
   },
   {
     name: HeroNames.Anduin,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Blaze, HeroNames.Butcher, HeroNames.Alarak, HeroNames.Hanzo, HeroNames.Sylvanas]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Blaze, HeroNames.Butcher, HeroNames.Alarak, HeroNames.Hanzo, HeroNames.Sylvanas]),
     enemyHeroes: ([HeroNames.Varian, HeroNames.Sonya, HeroNames.Lunara, HeroNames.Stukov]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.CurssedHollow,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen],
     badMaps:[MapNames.BarxisHoldout],
+    
   },
   {
     name: HeroNames.Auriel,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Diablo, HeroNames.Leoric, HeroNames.Valla, HeroNames.Tassadar]),
+    skills: [], friendHeroes:   ([HeroNames.Diablo, HeroNames.Leoric, HeroNames.Valla, HeroNames.Tassadar]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Chen, HeroNames.Junkrat, HeroNames.Deckard]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple],
     badMaps:[MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.WarheadJuction],
@@ -396,7 +867,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Brightwing,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Diablo, HeroNames.Cho, HeroNames.Stitches, HeroNames.Tracer, HeroNames.Genji]),
+    skills: [], friendHeroes:   ([HeroNames.Diablo, HeroNames.Cho, HeroNames.Stitches, HeroNames.Tracer, HeroNames.Genji]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Johanna, HeroNames.ETC]),
     goodMaps:[MapNames.AlteracPass,MapNames.CurssedHollow,MapNames.SkyTemple,MapNames.TowersOfDoom,MapNames.WarheadJuction],
     badMaps:[MapNames.TombOfTheSpiderQueen],
@@ -404,7 +875,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Deckard,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Blaze, HeroNames.SgtHammer, HeroNames.Jaina]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Blaze, HeroNames.SgtHammer, HeroNames.Jaina]),
     enemyHeroes: ([HeroNames.Johanna, HeroNames.Deathwing, HeroNames.Tracer,HeroNames.LiMing,HeroNames.Malfurion]),
     goodMaps:[MapNames.AlteracPass,MapNames.BattelfieldOfEternity,MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen],
     badMaps:[MapNames.BlackheartsBay,MapNames.HamuraTemple,MapNames.SkyTemple,MapNames.WarheadJuction,],
@@ -413,7 +884,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Kharazim,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Garrosh, HeroNames.ETC, HeroNames.Anubarak, HeroNames.Genji]),
+    skills: [], friendHeroes:   ([HeroNames.Garrosh, HeroNames.ETC, HeroNames.Anubarak, HeroNames.Genji]),
     enemyHeroes: ([HeroNames.Johanna, HeroNames.Auriel, HeroNames.Medivh,HeroNames.Uther]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.DragonShire,MapNames.HamuraTemple,MapNames.SkyTemple],
     badMaps:[MapNames.BarxisHoldout,MapNames.TombOfTheSpiderQueen],
@@ -421,7 +892,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.LiLi,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Blaze, HeroNames.Hanzo, HeroNames.Kaelthas, HeroNames.Uther]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Blaze, HeroNames.Hanzo, HeroNames.Kaelthas, HeroNames.Uther]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Yrel, HeroNames.Sylvanas,HeroNames.Stukov]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.DragonShire,MapNames.HamuraTemple,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BlackheartsBay,MapNames.SkyTemple],
@@ -430,7 +901,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.LieutenantMorales,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Raynor, HeroNames.Valla]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Raynor, HeroNames.Valla]),
     enemyHeroes: ([HeroNames.Garrosh, HeroNames.Chen, HeroNames.Chromie,HeroNames.Lunara,HeroNames.Auriel]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple],
     badMaps:[MapNames.AlteracPass,MapNames.GardenOfTerror,MapNames.TombOfTheSpiderQueen],
@@ -438,7 +909,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Lucio,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Arthas, HeroNames.Diablo, HeroNames.Greymane, HeroNames.Valla]),
+    skills: [], friendHeroes:   ([HeroNames.Arthas, HeroNames.Diablo, HeroNames.Greymane, HeroNames.Valla]),
     enemyHeroes: ([HeroNames.Deckard, HeroNames.Malfurion, HeroNames.SgtHammer,HeroNames.Raynor]),
     goodMaps:[MapNames.AlteracPass,MapNames.BattelfieldOfEternity,MapNames.CurssedHollow,MapNames.TowersOfDoom,MapNames.VolkayaFoundry],
     badMaps:[],
@@ -446,7 +917,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Malfurion,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Blaze, HeroNames.Chromie, HeroNames.Guldan, HeroNames.Jaina, HeroNames.Kaelthas, HeroNames.KelThuzad, HeroNames.LiMing, HeroNames.Ragnaros, HeroNames.Nazeebo]),
+    skills: [], friendHeroes:   ([HeroNames.Blaze, HeroNames.Chromie, HeroNames.Guldan, HeroNames.Jaina, HeroNames.Kaelthas, HeroNames.KelThuzad, HeroNames.LiMing, HeroNames.Ragnaros, HeroNames.Nazeebo]),
     enemyHeroes: ([HeroNames.Alarak, HeroNames.Anubarak, HeroNames.Artanis,HeroNames.Jaina,HeroNames.Kerrigan,HeroNames.LiMing,HeroNames.Tracer]),
     goodMaps:[MapNames.CurssedHollow,MapNames.DragonShire,MapNames.TombOfTheSpiderQueen],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.SkyTemple],
@@ -455,7 +926,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Rehgar,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Sonya, HeroNames.Illidan, HeroNames.Greymane]),
+    skills: [], friendHeroes:   ([HeroNames.Sonya, HeroNames.Illidan, HeroNames.Greymane]),
     enemyHeroes: ([HeroNames.Muradin, HeroNames.Varian, HeroNames.Ana,HeroNames.Tracer]),
     goodMaps:[MapNames.BlackheartsBay,MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.SkyTemple,MapNames.WarheadJuction],
     badMaps:[MapNames.BarxisHoldout,MapNames.HamuraTemple,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry],
@@ -463,7 +934,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Stukov,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Raynor, HeroNames.ETC, HeroNames.SgtHammer]),
+    skills: [], friendHeroes:   ([HeroNames.Raynor, HeroNames.ETC, HeroNames.SgtHammer]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Genji, HeroNames.Uther]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.CurssedHollow],
     badMaps:[MapNames.BattelfieldOfEternity],
@@ -471,7 +942,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Tyrande,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Diablo, HeroNames.ETC, HeroNames.Varian, HeroNames.Anubarak,HeroNames.LiMing,HeroNames.Greymane,HeroNames.Raynor,HeroNames.Hanzo]),
+    skills: [], friendHeroes:   ([HeroNames.Diablo, HeroNames.ETC, HeroNames.Varian, HeroNames.Anubarak,HeroNames.LiMing,HeroNames.Greymane,HeroNames.Raynor,HeroNames.Hanzo]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Muradin, HeroNames.Zeratul,HeroNames.Maiev, HeroNames.Fenix, HeroNames.Lunara]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.DragonShire,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen],
     badMaps:[],
@@ -480,7 +951,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Uther,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Kerrigan, HeroNames.Illidan, HeroNames.Butcher,HeroNames.Zuljin,HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Kerrigan, HeroNames.Illidan, HeroNames.Butcher,HeroNames.Zuljin,HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Guldan, HeroNames.Lunara, HeroNames.Malthael,HeroNames.Nazeebo, HeroNames.Sylvanas, HeroNames.Zagara]),
     goodMaps:[MapNames.InfernalShrines],
     badMaps:[MapNames.BarxisHoldout,MapNames.WarheadJuction],
@@ -488,7 +959,7 @@ export const healers: Hero[] = [
   {
     name: HeroNames.Whitemane,
     role: roles.Healer,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Sonya, HeroNames.Cassia, HeroNames.Chromie,HeroNames.Hanzo]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Sonya, HeroNames.Cassia, HeroNames.Chromie,HeroNames.Hanzo]),
     enemyHeroes: ([HeroNames.Garrosh, HeroNames.Malthael, HeroNames.Alarak,HeroNames.LiMing, HeroNames.Ana]),
     goodMaps:[MapNames.InfernalShrines,MapNames.TowersOfDoom],
     badMaps:[MapNames.BlackheartsBay,MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.HamuraTemple,MapNames.SkyTemple],
@@ -497,9 +968,9 @@ export const healers: Hero[] = [
 
 export const support: Hero[] = [
   {
-    name: HeroNames.Abathur,
+    name: HeroNames.Abathur, 
     role: roles.Support,
-    friendHeroes: ([HeroNames.Illidan, HeroNames.Zeratul, HeroNames.Tracer, HeroNames.Greymane,HeroNames.Genji,HeroNames.Malthael,HeroNames.Yrel,HeroNames.Sonya]),
+    skills: [], friendHeroes:   ([HeroNames.Illidan, HeroNames.Zeratul, HeroNames.Tracer, HeroNames.Greymane,HeroNames.Genji,HeroNames.Malthael,HeroNames.Yrel,HeroNames.Sonya]),
     enemyHeroes: ([HeroNames.Dehaka, HeroNames.Falstad, HeroNames.Ragnaros, HeroNames.Zarya,HeroNames.Sylvanas,HeroNames.SgtHammer]),
     goodMaps:[MapNames.AlteracPass,MapNames.CurssedHollow,MapNames.SkyTemple,MapNames.GardenOfTerror,MapNames.TowersOfDoom],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry],
@@ -507,7 +978,7 @@ export const support: Hero[] = [
   {
     name: HeroNames.Medivh,
     role: roles.Support,
-    friendHeroes: ([HeroNames.Illidan, HeroNames.Greymane, HeroNames.Genji, HeroNames.Tracer,HeroNames.Diablo,HeroNames.Stitches]),
+    skills: [], friendHeroes:   ([HeroNames.Illidan, HeroNames.Greymane, HeroNames.Genji, HeroNames.Tracer,HeroNames.Diablo,HeroNames.Stitches]),
     enemyHeroes: ([HeroNames.Guldan, HeroNames.Lunara, HeroNames.Garrosh, HeroNames.Malfurion]),
     goodMaps:[MapNames.CurssedHollow,MapNames.SkyTemple,MapNames.TowersOfDoom],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout],
@@ -515,7 +986,7 @@ export const support: Hero[] = [
   {
     name: HeroNames.LostVikings,
     role: roles.Support,
-    friendHeroes: ([HeroNames.Zarya, HeroNames.Garrosh, HeroNames.Sylvanas, HeroNames.Raynor,HeroNames.SgtHammer]),
+    skills: [], friendHeroes:   ([HeroNames.Zarya, HeroNames.Garrosh, HeroNames.Sylvanas, HeroNames.Raynor,HeroNames.SgtHammer]),
     enemyHeroes: ([HeroNames.Zagara, HeroNames.Sonya, HeroNames.Zeratul,HeroNames.Nova, HeroNames.Falstad, HeroNames.Dehaka,HeroNames.LiMing]),
    goodMaps:[MapNames.AlteracPass,MapNames.CurssedHollow,MapNames.SkyTemple,MapNames.GardenOfTerror,MapNames.TowersOfDoom,MapNames.WarheadJuction,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple,MapNames.TombOfTheSpiderQueen],
@@ -523,7 +994,7 @@ export const support: Hero[] = [
   {
     name: HeroNames.Zarya,
     role: roles.Support,
-    friendHeroes: ([HeroNames.Garrosh, HeroNames.Sonya, HeroNames.Valla, HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Garrosh, HeroNames.Sonya, HeroNames.Valla, HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Garrosh, HeroNames.Yrel, HeroNames.Lunara,HeroNames.Maiev, HeroNames.Auriel]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple],
     badMaps:[MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.WarheadJuction],
@@ -534,7 +1005,8 @@ export const range: Hero[] = [
   {
     name: HeroNames.Azmodan,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Jaina, HeroNames.Johanna, HeroNames.Malfurion, HeroNames.Maiev]),
+    skills: [], 
+    friendHeroes:   ([HeroNames.Jaina, HeroNames.Johanna, HeroNames.Malfurion, HeroNames.Maiev]),
     enemyHeroes: ([HeroNames.Artanis, HeroNames.Anubarak, HeroNames.Diablo, HeroNames.Leoric, HeroNames.Malthael, HeroNames.Muradin, HeroNames.Sonya, HeroNames.Butcher]),
     goodMaps:[MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.WarheadJuction],
     badMaps:[MapNames.BarxisHoldout],
@@ -542,7 +1014,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Cassia,
     role: roles.Range,
-    friendHeroes: ([HeroNames.LiLi, HeroNames.Johanna, HeroNames.Artanis, HeroNames.Thrall, HeroNames.Jaina]),
+    skills: [], friendHeroes:   ([HeroNames.LiLi, HeroNames.Johanna, HeroNames.Artanis, HeroNames.Thrall, HeroNames.Jaina]),
     enemyHeroes: ([HeroNames.Kaelthas, HeroNames.Xul, HeroNames.Imperius, HeroNames.ETC, HeroNames.Malganis, HeroNames.Johanna]),
     goodMaps:[],
     badMaps:[],
@@ -550,7 +1022,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Chromie,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Ana, HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Ana, HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Illidan, HeroNames.Diablo, HeroNames.Zeratul, HeroNames.Tracer]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.VolkayaFoundry],
     badMaps:[],
@@ -558,7 +1030,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Falstad,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Arthas, HeroNames.ETC, HeroNames.Tassadar, HeroNames.Uther]),
+    skills: [], friendHeroes:   ([HeroNames.Arthas, HeroNames.ETC, HeroNames.Tassadar, HeroNames.Uther]),
     enemyHeroes: ([HeroNames.Genji, HeroNames.Greymane, HeroNames.Illidan, HeroNames.Nova, HeroNames.Valeera, HeroNames.Zeratul]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.CurssedHollow,MapNames.DragonShire,MapNames.HamuraTemple,MapNames.TowersOfDoom,MapNames.WarheadJuction],
     badMaps:[MapNames.TombOfTheSpiderQueen],
@@ -566,7 +1038,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Fenix,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Maiev, HeroNames.Thrall, HeroNames.Diablo]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Maiev, HeroNames.Thrall, HeroNames.Diablo]),
     enemyHeroes: ([HeroNames.Varian, HeroNames.ETC, HeroNames.Genji, HeroNames.Zeratul, HeroNames.Lucio]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen],
     badMaps:[],
@@ -574,7 +1046,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Gall,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Alextraza, HeroNames.Ana, HeroNames.Auriel, HeroNames.Brightwing, HeroNames.Yrel, HeroNames.Blaze]),
+    skills: [], friendHeroes:   ([HeroNames.Alextraza, HeroNames.Ana, HeroNames.Auriel, HeroNames.Brightwing, HeroNames.Yrel, HeroNames.Blaze]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Garrosh, HeroNames.Greymane, HeroNames.Imperius, HeroNames.Kharazim, HeroNames.Leoric, HeroNames.Maiev, HeroNames.Malthael, HeroNames.Raynor]),
     goodMaps:[MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.WarheadJuction],
@@ -582,7 +1054,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Genji,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Jaina, HeroNames.Uther, HeroNames.ETC]),
+    skills: [], friendHeroes:   ([HeroNames.Jaina, HeroNames.Uther, HeroNames.ETC]),
     enemyHeroes: ([HeroNames.Varian, HeroNames.Malfurion, HeroNames.Lunara, HeroNames.Uther]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.HamuraTemple,MapNames.InfernalShrines],
     badMaps:[MapNames.TombOfTheSpiderQueen],
@@ -590,7 +1062,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Greymane,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Abathur, HeroNames.ETC, HeroNames.Garrosh, HeroNames.Tyrael, HeroNames.Uther, HeroNames.Rehgar, HeroNames.Malthael]),
+    skills: [], friendHeroes:   ([HeroNames.Abathur, HeroNames.ETC, HeroNames.Garrosh, HeroNames.Tyrael, HeroNames.Uther, HeroNames.Rehgar, HeroNames.Malthael]),
     enemyHeroes: ([HeroNames.Arthas, HeroNames.Brightwing, HeroNames.Johanna, HeroNames.Muradin, HeroNames.Butcher, HeroNames.Uther, HeroNames.Xul]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.DragonShire,MapNames.CurssedHollow,MapNames.SkyTemple,MapNames.TombOfTheSpiderQueen],
     badMaps:[],
@@ -598,7 +1070,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Guldan,
     role: roles.Range,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Malfurion, HeroNames.Auriel]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Malfurion, HeroNames.Auriel]),
     enemyHeroes: ([HeroNames.Kerrigan, HeroNames.Tracer,HeroNames.Illidan, HeroNames.Greymane]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry,MapNames.AlteracPass],
     badMaps:[],
@@ -606,7 +1078,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Hanzo,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Zeratul, HeroNames.ETC, HeroNames.Diablo, HeroNames.Blaze, HeroNames.Johanna, HeroNames.Malganis]),
+    skills: [], friendHeroes:   ([HeroNames.Zeratul, HeroNames.ETC, HeroNames.Diablo, HeroNames.Blaze, HeroNames.Johanna, HeroNames.Malganis]),
     enemyHeroes: ([HeroNames.Genji, HeroNames.Illidan, HeroNames.Zeratul]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.CurssedHollow,MapNames.DragonShire,MapNames.InfernalShrines,MapNames.TowersOfDoom,MapNames.VolkayaFoundry],
     badMaps:[MapNames.WarheadJuction],
@@ -614,7 +1086,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Jaina,
     role: roles.Range,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Johanna, HeroNames.Maiev, HeroNames.Malfurion, HeroNames.Muradin, HeroNames.Varian, HeroNames.Xul]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Johanna, HeroNames.Maiev, HeroNames.Malfurion, HeroNames.Muradin, HeroNames.Varian, HeroNames.Xul]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Alarak, HeroNames.Chen, HeroNames.Genji, HeroNames.Tracer, HeroNames.Zeratul]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.InfernalShrines,MapNames.GardenOfTerror,MapNames.TombOfTheSpiderQueen],
     badMaps:[],
@@ -622,7 +1094,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Junkrat,
     role: roles.Range,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Garrosh, HeroNames.Uther, HeroNames.Malfurion, HeroNames.Zeratul]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Garrosh, HeroNames.Uther, HeroNames.Malfurion, HeroNames.Zeratul]),
     enemyHeroes: ([HeroNames.Illidan, HeroNames.Tracer, HeroNames.Zeratul, HeroNames.Tyrael, HeroNames.Genji]),
     goodMaps:[MapNames.AlteracPass,MapNames.BarxisHoldout,MapNames.CurssedHollow,MapNames.DragonShire,MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry,MapNames.VolkayaFoundry,MapNames.WarheadJuction],
     badMaps:[],
@@ -630,7 +1102,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Kaelthas,
     role: roles.Range,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Arthas, HeroNames.Malfurion, HeroNames.Uther]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Arthas, HeroNames.Malfurion, HeroNames.Uther]),
     enemyHeroes: ([HeroNames.Zeratul, HeroNames.Illidan, HeroNames.Kerrigan, HeroNames.Tracer]),
     goodMaps:[MapNames.AlteracPass,MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.TowersOfDoom,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BlackheartsBay,MapNames.WarheadJuction],
@@ -639,7 +1111,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.KelThuzad,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Anduin, HeroNames.Arthas, HeroNames.Johanna, HeroNames.Malfurion, HeroNames.Butcher, HeroNames.Valeera, HeroNames.Varian, HeroNames.Xul]),
+    skills: [], friendHeroes:   ([HeroNames.Anduin, HeroNames.Arthas, HeroNames.Johanna, HeroNames.Malfurion, HeroNames.Butcher, HeroNames.Valeera, HeroNames.Varian, HeroNames.Xul]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Chen, HeroNames.Genji, HeroNames.Nova, HeroNames.Samuro, HeroNames.Tracer, HeroNames.Valeera, HeroNames.Zeratul]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.TowersOfDoom],
     badMaps:[MapNames.AlteracPass,MapNames.WarheadJuction],
@@ -647,7 +1119,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.LiMing,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Arthas, HeroNames.ETC, HeroNames.Johanna, HeroNames.Malfurion, HeroNames.Valeera, HeroNames.Varian, HeroNames.Xul]),
+    skills: [], friendHeroes:   ([HeroNames.Arthas, HeroNames.ETC, HeroNames.Johanna, HeroNames.Malfurion, HeroNames.Valeera, HeroNames.Varian, HeroNames.Xul]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Chen, HeroNames.Genji, HeroNames.Samuro, HeroNames.Tracer, HeroNames.Valeera, HeroNames.Zeratul]),
     goodMaps:[MapNames.AlteracPass,MapNames.BattelfieldOfEternity,MapNames.CurssedHollow,MapNames.InfernalShrines],
     badMaps:[MapNames.BlackheartsBay],
@@ -655,7 +1127,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Lunara,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Arthas, HeroNames.Muradin, HeroNames.Jaina]),
+    skills: [], friendHeroes:   ([HeroNames.Arthas, HeroNames.Muradin, HeroNames.Jaina]),
     enemyHeroes: ([HeroNames.Illidan, HeroNames.Jaina, HeroNames.Malfurion, HeroNames.Stukov]),
     goodMaps:[MapNames.BattelfieldOfEternity],
     badMaps:[MapNames.WarheadJuction],
@@ -663,7 +1135,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Mephisto,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Deckard, HeroNames.ETC, HeroNames.Zarya, HeroNames.Diablo]),
+    skills: [], friendHeroes:   ([HeroNames.Deckard, HeroNames.ETC, HeroNames.Zarya, HeroNames.Diablo]),
     enemyHeroes: ([HeroNames.Kaelthas, HeroNames.KelThuzad, HeroNames.Junkrat, HeroNames.Stitches, HeroNames.Anubarak]),
     goodMaps:[MapNames.AlteracPass,MapNames.WarheadJuction,MapNames.BarxisHoldout,MapNames.InfernalShrines,MapNames.VolkayaFoundry],
     badMaps:[MapNames.WarheadJuction],
@@ -671,7 +1143,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Nazeebo,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Raynor, HeroNames.Stukov]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Raynor, HeroNames.Stukov]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Sylvanas]),
     goodMaps:[MapNames.DragonShire,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.SkyTemple,MapNames.BlackheartsBay],
@@ -679,7 +1151,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Nova,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Blaze, HeroNames.Sylvanas, HeroNames.Stukov]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Blaze, HeroNames.Sylvanas, HeroNames.Stukov]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Chen, HeroNames.Genji, HeroNames.Zarya, HeroNames.Brightwing]),
     goodMaps:[MapNames.DragonShire,MapNames.HamuraTemple,MapNames.WarheadJuction],
     badMaps:[MapNames.BarxisHoldout,MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TowersOfDoom],
@@ -687,7 +1159,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Orphea,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Blaze, HeroNames.Johanna, HeroNames.Maiev, HeroNames.Malganis, HeroNames.Varian, HeroNames.Xul]),
+    skills: [], friendHeroes:   ([HeroNames.Blaze, HeroNames.Johanna, HeroNames.Maiev, HeroNames.Malganis, HeroNames.Varian, HeroNames.Xul]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Chen, HeroNames.Genji, HeroNames.Johanna, HeroNames.Lunara, HeroNames.Muradin]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.GardenOfTerror,MapNames.TombOfTheSpiderQueen,MapNames.InfernalShrines,MapNames.SkyTemple],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BlackheartsBay,MapNames.HamuraTemple],
@@ -695,7 +1167,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Probius,
     role: roles.Range,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Diablo, HeroNames.Anubarak, HeroNames.Arthas,HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Diablo, HeroNames.Anubarak, HeroNames.Arthas,HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Kerrigan, HeroNames.Alarak, HeroNames.Zeratul, HeroNames.Tracer]),
     goodMaps:[MapNames.AlteracPass,MapNames.BattelfieldOfEternity,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.DragonShire,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BlackheartsBay],
@@ -703,7 +1175,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Raynor,
     role: roles.Range,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Garrosh, HeroNames.Thrall, HeroNames.LieutenantMorales]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Garrosh, HeroNames.Thrall, HeroNames.LieutenantMorales]),
     enemyHeroes: ([HeroNames.Johanna, HeroNames.Artanis, HeroNames.Cassia]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.TombOfTheSpiderQueen,MapNames.InfernalShrines,MapNames.TowersOfDoom],
     badMaps:[],
@@ -711,7 +1183,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.SgtHammer,
     role: roles.Range,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Johanna, HeroNames.LieutenantMorales, HeroNames.Ana]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Johanna, HeroNames.LieutenantMorales, HeroNames.Ana]),
     enemyHeroes: ([HeroNames.Artanis, HeroNames.Chromie, HeroNames.KelThuzad, HeroNames.LiMing, HeroNames.Stitches]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.InfernalShrines],
     badMaps:[MapNames.BlackheartsBay,MapNames.GardenOfTerror,MapNames.HamuraTemple,MapNames.TombOfTheSpiderQueen,MapNames.WarheadJuction],
@@ -719,7 +1191,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Sylvanas,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Diablo, HeroNames.ETC, HeroNames.Maiev, HeroNames.Genji, HeroNames.Blaze, HeroNames.Malthael, HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Diablo, HeroNames.ETC, HeroNames.Maiev, HeroNames.Genji, HeroNames.Blaze, HeroNames.Malthael, HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Chen, HeroNames.Genji, HeroNames.Nova, HeroNames.Valeera, HeroNames.Zeratul]),
     goodMaps:[MapNames.AlteracPass,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BlackheartsBay,MapNames.HamuraTemple,MapNames.SkyTemple],
@@ -727,7 +1199,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Tassadar,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Maiev, HeroNames.Johanna, HeroNames.ETC, HeroNames.Genji, HeroNames.Zeratul]),
+    skills: [], friendHeroes:   ([HeroNames.Maiev, HeroNames.Johanna, HeroNames.ETC, HeroNames.Genji, HeroNames.Zeratul]),
     enemyHeroes: ([HeroNames.Tracer, HeroNames.Greymane, HeroNames.Anubarak, HeroNames.Kerrigan]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.CurssedHollow,MapNames.HamuraTemple],
@@ -735,7 +1207,7 @@ export const range: Hero[] = [
     {
     name: HeroNames.Tracer,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Tassadar, HeroNames.Jaina, HeroNames.Guldan, HeroNames.Kaelthas, HeroNames.Malfurion, HeroNames.Anduin, HeroNames.Anubarak]),
+    skills: [], friendHeroes:   ([HeroNames.Tassadar, HeroNames.Jaina, HeroNames.Guldan, HeroNames.Kaelthas, HeroNames.Malfurion, HeroNames.Anduin, HeroNames.Anubarak]),
     enemyHeroes: ([HeroNames.Varian, HeroNames.Diablo, HeroNames.Medivh, HeroNames.Raynor, HeroNames.SgtHammer, HeroNames.Cassia, HeroNames.LiLi, HeroNames.Johanna]),
     goodMaps:[MapNames.CurssedHollow,MapNames.DragonShire,MapNames.SkyTemple,MapNames.TowersOfDoom,MapNames.VolkayaFoundry,MapNames.WarheadJuction],
     badMaps:[MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen],
@@ -744,7 +1216,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Tychus,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Garrosh, HeroNames.ETC, HeroNames.Dehaka, HeroNames.Uther]),
+    skills: [], friendHeroes:   ([HeroNames.Garrosh, HeroNames.ETC, HeroNames.Dehaka, HeroNames.Uther]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Johanna, HeroNames.Lucio]),
     goodMaps:[MapNames.CurssedHollow,MapNames.InfernalShrines,MapNames.TowersOfDoom,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BlackheartsBay,MapNames.SkyTemple,MapNames.WarheadJuction],
@@ -752,7 +1224,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Valla,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Arthas, HeroNames.Garrosh, HeroNames.Auriel, HeroNames.Uther,HeroNames.LieutenantMorales]),
+    skills: [], friendHeroes:   ([HeroNames.Arthas, HeroNames.Garrosh, HeroNames.Auriel, HeroNames.Uther,HeroNames.LieutenantMorales]),
     enemyHeroes: ([HeroNames.Greymane, HeroNames.Illidan, HeroNames.Nova, HeroNames.Butcher, HeroNames.Valeera, HeroNames.Zeratul, HeroNames.Cassia, HeroNames.LiLi, HeroNames.Johanna]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry],
     badMaps:[],
@@ -760,7 +1232,7 @@ export const range: Hero[] = [
   {
     name: HeroNames.Zagara,
     role: roles.Range,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Jaina, HeroNames.Deckard]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Jaina, HeroNames.Deckard]),
     enemyHeroes: ([HeroNames.Illidan, HeroNames.Falstad, HeroNames.Chen, HeroNames.Zeratul]),
     goodMaps:[MapNames.AlteracPass,MapNames.BarxisHoldout,MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.SkyTemple,MapNames.TowersOfDoom,MapNames.WarheadJuction],
     badMaps:[MapNames.HamuraTemple],
@@ -768,7 +1240,7 @@ export const range: Hero[] = [
   { 
     name: HeroNames.Zuljin,
     role: roles.Range,
-    friendHeroes: ([HeroNames.Tyrael, HeroNames.ETC, HeroNames.Tassadar, HeroNames.Uther, HeroNames.Medivh, HeroNames.Kharazim]),
+    skills: [], friendHeroes:   ([HeroNames.Tyrael, HeroNames.ETC, HeroNames.Tassadar, HeroNames.Uther, HeroNames.Medivh, HeroNames.Kharazim]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Dehaka, HeroNames.Diablo, HeroNames.Garrosh, HeroNames.Uther]),
     goodMaps:[],
     badMaps:[],
@@ -780,7 +1252,7 @@ export const melee: Hero[] = [
   {
     name: HeroNames.Alarak,
     role: roles.Melee,
-    friendHeroes: ([HeroNames.Raynor, HeroNames.Jaina, HeroNames.ETC, HeroNames.Garrosh]),
+    skills: [], friendHeroes:   ([HeroNames.Raynor, HeroNames.Jaina, HeroNames.ETC, HeroNames.Garrosh]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Johanna, HeroNames.Deathwing,HeroNames.Medivh]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.TowersOfDoom],
     badMaps:[MapNames.BlackheartsBay,MapNames.InfernalShrines,MapNames.SkyTemple],
@@ -788,7 +1260,7 @@ export const melee: Hero[] = [
   {
     name: HeroNames.Illidan,
     role: roles.Melee,
-    friendHeroes: ([HeroNames.Abathur, HeroNames.Medivh, HeroNames.Rehgar, HeroNames.Tyrael,HeroNames.Uther,HeroNames.Zarya]),
+    skills: [], friendHeroes:   ([HeroNames.Abathur, HeroNames.Medivh, HeroNames.Rehgar, HeroNames.Tyrael,HeroNames.Uther,HeroNames.Zarya]),
     enemyHeroes: ([HeroNames.Arthas, HeroNames.Brightwing, HeroNames.ETC,HeroNames.LiLi,HeroNames.Johanna,HeroNames.Muradin,HeroNames.Sonya,HeroNames.Uther,HeroNames.Varian]),
     goodMaps:[MapNames.BlackheartsBay,MapNames.CurssedHollow,MapNames.SkyTemple,MapNames.GardenOfTerror,MapNames.WarheadJuction],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.TowersOfDoom,MapNames.VolkayaFoundry],
@@ -796,7 +1268,7 @@ export const melee: Hero[] = [
   {
     name: HeroNames.Kerrigan,
     role: roles.Melee,
-    friendHeroes: ([HeroNames.Tyrael, HeroNames.Uther, HeroNames.Medivh, HeroNames.Tyrande]),
+    skills: [], friendHeroes:   ([HeroNames.Tyrael, HeroNames.Uther, HeroNames.Medivh, HeroNames.Tyrande]),
     enemyHeroes: ([HeroNames.Tyrael, HeroNames.ETC, HeroNames.Garrosh,HeroNames.Uther,HeroNames.Medivh,HeroNames.Auriel,HeroNames.Lucio]),
     goodMaps:[MapNames.AlteracPass,MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.TombOfTheSpiderQueen,MapNames.InfernalShrines,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BlackheartsBay,MapNames.WarheadJuction],
@@ -804,7 +1276,7 @@ export const melee: Hero[] = [
   {
     name: HeroNames.Maiev,
     role: roles.Melee,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Blaze, HeroNames.Jaina, HeroNames.Tassadar, HeroNames.Deckard,HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Blaze, HeroNames.Jaina, HeroNames.Tassadar, HeroNames.Deckard,HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Arthas, HeroNames.Tyrael, HeroNames.ETC,HeroNames.Johanna,HeroNames.Lunara,HeroNames.Tracer,HeroNames.Lucio,HeroNames.Brightwing]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.CurssedHollow,MapNames.InfernalShrines,MapNames.GardenOfTerror,MapNames.TombOfTheSpiderQueen],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.HamuraTemple,MapNames.WarheadJuction],
@@ -812,7 +1284,7 @@ export const melee: Hero[] = [
   {
     name: HeroNames.Murky,
     role: roles.Melee,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Zarya, HeroNames.Brightwing]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Zarya, HeroNames.Brightwing]),
     enemyHeroes: ([HeroNames.Sonya, HeroNames.Falstad]),
     goodMaps:[MapNames.DragonShire,MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.TowersOfDoom,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.HamuraTemple,MapNames.BlackheartsBay,MapNames.BarxisHoldout,MapNames.TombOfTheSpiderQueen],
@@ -820,7 +1292,7 @@ export const melee: Hero[] = [
   {
     name: HeroNames.Qhira,
     role: roles.Melee,
-    friendHeroes: ([HeroNames.Uther, HeroNames.Rehgar, HeroNames.Abathur, HeroNames.Anubarak]),
+    skills: [], friendHeroes:   ([HeroNames.Uther, HeroNames.Rehgar, HeroNames.Abathur, HeroNames.Anubarak]),
     enemyHeroes: ([HeroNames.Lucio, HeroNames.Uther, HeroNames.ETC,HeroNames.Diablo,HeroNames.Garrosh,HeroNames.Tracer]),
     goodMaps:[MapNames.DragonShire,MapNames.HamuraTemple,MapNames.TombOfTheSpiderQueen],
     badMaps:[],
@@ -828,7 +1300,7 @@ export const melee: Hero[] = [
   {
     name: HeroNames.Samuro,
     role: roles.Melee,
-    friendHeroes: ([HeroNames.Abathur, HeroNames.Deckard, HeroNames.Malfurion, HeroNames.Sylvanas]),
+    skills: [], friendHeroes:   ([HeroNames.Abathur, HeroNames.Deckard, HeroNames.Malfurion, HeroNames.Sylvanas]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Lucio, HeroNames.Yrel,HeroNames.Cassia,HeroNames.Orphea,HeroNames.Medivh,HeroNames.Diablo,HeroNames.Stukov]),
     goodMaps:[MapNames.AlteracPass,MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.SkyTemple,MapNames.TowersOfDoom],
     badMaps:[MapNames.CurssedHollow,MapNames.HamuraTemple,MapNames.TombOfTheSpiderQueen],
@@ -836,7 +1308,7 @@ export const melee: Hero[] = [
   {
     name: HeroNames.Butcher,
     role: roles.Melee,
-    friendHeroes: ([HeroNames.Abathur, HeroNames.Tyrande, HeroNames.Uther, HeroNames.Tyrael]),
+    skills: [], friendHeroes:   ([HeroNames.Abathur, HeroNames.Tyrande, HeroNames.Uther, HeroNames.Tyrael]),
     enemyHeroes: ([HeroNames.Johanna, HeroNames.ETC, HeroNames.Brightwing,HeroNames.Uther]),
     goodMaps:[MapNames.DragonShire,MapNames.GardenOfTerror,MapNames.SkyTemple,MapNames.TombOfTheSpiderQueen,MapNames.TowersOfDoom,MapNames.WarheadJuction,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BlackheartsBay,MapNames.BarxisHoldout],
@@ -844,7 +1316,7 @@ export const melee: Hero[] = [
   {
     name: HeroNames.Valeera,
     role: roles.Melee,
-    friendHeroes: ([HeroNames.Garrosh, HeroNames.ETC, HeroNames.Thrall, HeroNames.Jaina,HeroNames.Abathur]),
+    skills: [], friendHeroes:   ([HeroNames.Garrosh, HeroNames.ETC, HeroNames.Thrall, HeroNames.Jaina,HeroNames.Abathur]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Arthas, HeroNames.Medivh,HeroNames.Lucio]),
     goodMaps:[MapNames.BlackheartsBay,MapNames.CurssedHollow,MapNames.DragonShire,MapNames.SkyTemple,MapNames.WarheadJuction],
     badMaps:[MapNames.TombOfTheSpiderQueen],
@@ -852,7 +1324,7 @@ export const melee: Hero[] = [
   {
     name: HeroNames.Zeratul,
     role: roles.Melee,
-    friendHeroes: ([HeroNames.Abathur, HeroNames.Diablo, HeroNames.Garrosh, HeroNames.Malfurion,HeroNames.Kharazim,HeroNames.Jaina,HeroNames.LiMing,HeroNames.Junkrat,HeroNames.Hanzo]),
+    skills: [], friendHeroes:   ([HeroNames.Abathur, HeroNames.Diablo, HeroNames.Garrosh, HeroNames.Malfurion,HeroNames.Kharazim,HeroNames.Jaina,HeroNames.LiMing,HeroNames.Junkrat,HeroNames.Hanzo]),
     enemyHeroes: ([HeroNames.Brightwing, HeroNames.Uther, HeroNames.Varian,HeroNames.Diablo,HeroNames.ETC,HeroNames.Medivh]),
     goodMaps:[MapNames.CurssedHollow,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TowersOfDoom],
     badMaps:[MapNames.BarxisHoldout,MapNames.TombOfTheSpiderQueen],
@@ -863,7 +1335,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Anubarak,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Greymane, HeroNames.Jaina, HeroNames.Kaelthas, HeroNames.Kerrigan,  HeroNames.Rehgar,HeroNames.Butcher]),
+    skills: [], friendHeroes:   ([HeroNames.Greymane, HeroNames.Jaina, HeroNames.Kaelthas, HeroNames.Kerrigan,  HeroNames.Rehgar,HeroNames.Butcher]),
     enemyHeroes: ([HeroNames.Leoric, HeroNames.Malthael, HeroNames.Tracer,HeroNames.Valla, HeroNames.Varian, HeroNames.Zuljin]),
     goodMaps:[MapNames.AlteracPass, MapNames.CurssedHollow,MapNames.GardenOfTerror],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.TombOfTheSpiderQueen,MapNames.BarxisHoldout],
@@ -871,7 +1343,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Arthas,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Diablo, HeroNames.Tyrael, HeroNames.Maiev, HeroNames.Greymane,  HeroNames.Raynor,HeroNames.Chromie,HeroNames.Zarya,HeroNames.Stukov,HeroNames.Rehgar]),
+    skills: [], friendHeroes:   ([HeroNames.Diablo, HeroNames.Tyrael, HeroNames.Maiev, HeroNames.Greymane,  HeroNames.Raynor,HeroNames.Chromie,HeroNames.Zarya,HeroNames.Stukov,HeroNames.Rehgar]),
     enemyHeroes: ([HeroNames.Garrosh, HeroNames.Sonya, HeroNames.Tracer,HeroNames.Raynor, HeroNames.Jaina, HeroNames.Ana]),
     goodMaps:[MapNames.BattelfieldOfEternity],
     badMaps:[MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.GardenOfTerror],
@@ -879,7 +1351,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Blaze,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Arthas, HeroNames.Kerrigan, HeroNames.Maiev, HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Arthas, HeroNames.Kerrigan, HeroNames.Maiev, HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Leoric, HeroNames.Lunara, HeroNames.Malthael,HeroNames.Nova, HeroNames.Tracer, HeroNames.Valla]),
     goodMaps:[MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TowersOfDoom,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BarxisHoldout,MapNames.DragonShire],
@@ -887,7 +1359,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Cho,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Alextraza, HeroNames.Ana, HeroNames.Auriel, HeroNames.Brightwing,HeroNames.Yrel,HeroNames.Blaze]),
+    skills: [], friendHeroes:   ([HeroNames.Alextraza, HeroNames.Ana, HeroNames.Auriel, HeroNames.Brightwing,HeroNames.Yrel,HeroNames.Blaze]),
     enemyHeroes: ([HeroNames.Anubarak, HeroNames.Garrosh, HeroNames.Greymane,HeroNames.Imperius, HeroNames.Kharazim, HeroNames.Leoric, HeroNames.Maiev, HeroNames.Malthael, HeroNames.Raynor, HeroNames.Tychus]),
     goodMaps:[MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.WarheadJuction],
@@ -895,7 +1367,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Diablo,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Thrall, HeroNames.Tassadar, HeroNames.Medivh, HeroNames.Tyrande]),
+    skills: [], friendHeroes:   ([HeroNames.Thrall, HeroNames.Tassadar, HeroNames.Medivh, HeroNames.Tyrande]),
     enemyHeroes: ([HeroNames.Garrosh, HeroNames.Leoric, HeroNames.Malthael,HeroNames.Raynor, HeroNames.Tychus]),
     goodMaps:[MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TombOfTheSpiderQueen],
     badMaps:[MapNames.BlackheartsBay,MapNames.BarxisHoldout,MapNames.HamuraTemple,],
@@ -903,7 +1375,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.ETC,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Blaze, HeroNames.Alarak, HeroNames.Greymane, HeroNames.Kaelthas, HeroNames.Uther]),
+    skills: [], friendHeroes:   ([HeroNames.Blaze, HeroNames.Alarak, HeroNames.Greymane, HeroNames.Kaelthas, HeroNames.Uther]),
     enemyHeroes: ([HeroNames.Johanna, HeroNames.Deathwing, HeroNames.Raynor,HeroNames.Kaelthas, HeroNames.Brightwing]),
     goodMaps:[MapNames.BattelfieldOfEternity],
     badMaps:[MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry],
@@ -911,7 +1383,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Garrosh,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Hanzo, HeroNames.Jaina, HeroNames.Zarya, HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Hanzo, HeroNames.Jaina, HeroNames.Zarya, HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Johanna, HeroNames.Malthael, HeroNames.Hanzo,HeroNames.Jaina, HeroNames.Anduin]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.TombOfTheSpiderQueen],
     badMaps:[MapNames.AlteracPass,MapNames.BlackheartsBay,MapNames.HamuraTemple,MapNames.WarheadJuction],
@@ -919,7 +1391,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Johanna,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Blaze, HeroNames.Maiev, HeroNames.Hanzo, HeroNames.Jaina, HeroNames.Deckard]),
+    skills: [], friendHeroes:   ([HeroNames.Blaze, HeroNames.Maiev, HeroNames.Hanzo, HeroNames.Jaina, HeroNames.Deckard]),
     enemyHeroes: ([HeroNames.Varian, HeroNames.Leoric, HeroNames.Hanzo,HeroNames.Zeratul]),
     goodMaps:[MapNames.AlteracPass,MapNames.BlackheartsBay,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.TowersOfDoom,MapNames.VolkayaFoundry,MapNames.WarheadJuction],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.DragonShire,MapNames.BarxisHoldout,MapNames.HamuraTemple],
@@ -927,7 +1399,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Malganis,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Jaina, HeroNames.Zeratul, HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Jaina, HeroNames.Zeratul, HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Garrosh, HeroNames.Hanzo, HeroNames.Zeratul,HeroNames.Malfurion]),
     goodMaps:[MapNames.AlteracPass,MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TowersOfDoom],
     badMaps:[MapNames.BlackheartsBay,MapNames.TombOfTheSpiderQueen,MapNames.WarheadJuction],
@@ -935,7 +1407,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Mei,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Xul, HeroNames.Lunara, HeroNames.Jaina,HeroNames.Deckard]),
+    skills: [], friendHeroes:   ([HeroNames.Xul, HeroNames.Lunara, HeroNames.Jaina,HeroNames.Deckard]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Yrel, HeroNames.Hanzo,HeroNames.Junkrat, HeroNames.Zeratul, HeroNames.Ana]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.CurssedHollow,MapNames.HamuraTemple],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BlackheartsBay,MapNames.DragonShire,MapNames.TowersOfDoom,MapNames.GardenOfTerror,MapNames.VolkayaFoundry],
@@ -943,7 +1415,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Muradin,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Blaze, HeroNames.Kerrigan, HeroNames.Kaelthas,HeroNames.Hanzo, HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Blaze, HeroNames.Kerrigan, HeroNames.Kaelthas,HeroNames.Hanzo, HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Thrall, HeroNames.Raynor,HeroNames.Jaina, HeroNames.Malfurion]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.HamuraTemple,],
     badMaps:[MapNames.TombOfTheSpiderQueen,MapNames.BarxisHoldout,MapNames.InfernalShrines],
@@ -951,7 +1423,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Stitches,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Blaze, HeroNames.Falstad, HeroNames.Kaelthas,HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Blaze, HeroNames.Falstad, HeroNames.Kaelthas,HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Johanna, HeroNames.Malthael, HeroNames.Greymane,HeroNames.Tychus, HeroNames.Anduin]),
     goodMaps:[MapNames.AlteracPass,MapNames.TombOfTheSpiderQueen,MapNames.CurssedHollow,MapNames.TowersOfDoom,MapNames.VolkayaFoundry,],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BlackheartsBay,MapNames.BarxisHoldout,MapNames.SkyTemple,MapNames.WarheadJuction],
@@ -959,7 +1431,7 @@ export const tank: Hero[] = [
   {
     name: HeroNames.Tyrael,
     role: roles.Tank,
-    friendHeroes: ([HeroNames.Blaze, HeroNames.Illidan, HeroNames.Alarak,HeroNames.SgtHammer, HeroNames.LieutenantMorales]),
+    skills: [], friendHeroes:   ([HeroNames.Blaze, HeroNames.Illidan, HeroNames.Alarak,HeroNames.SgtHammer, HeroNames.LieutenantMorales]),
     enemyHeroes: ([HeroNames.Garrosh, HeroNames.Blaze, HeroNames.Zeratul,HeroNames.Medivh, HeroNames.Brightwing]),
     goodMaps:[MapNames.AlteracPass,MapNames.CurssedHollow,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.WarheadJuction],
     badMaps:[MapNames.HamuraTemple,MapNames.VolkayaFoundry],
@@ -970,7 +1442,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Artanis,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Garrosh, HeroNames.Arthas, HeroNames.Kaelthas, HeroNames.Lunara,  HeroNames.Medivh,HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Garrosh, HeroNames.Arthas, HeroNames.Kaelthas, HeroNames.Lunara,  HeroNames.Medivh,HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Arthas, HeroNames.Varian,HeroNames.Jaina, HeroNames.Lunara, HeroNames.LiLi]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple],
     badMaps:[MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.TowersOfDoom],
@@ -978,7 +1450,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Chen,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Tyrael, HeroNames.Greymane, HeroNames.LiMing, HeroNames.Abathur,  HeroNames.Rehgar]),
+    skills: [], friendHeroes:   ([HeroNames.Tyrael, HeroNames.Greymane, HeroNames.LiMing, HeroNames.Abathur,  HeroNames.Rehgar]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Yrel, HeroNames.Raynor,HeroNames.LiMing, HeroNames.LostVikings, HeroNames.Lucio]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple,MapNames.SkyTemple],
     badMaps:[MapNames.BlackheartsBay,MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.TowersOfDoom,MapNames.WarheadJuction],
@@ -987,7 +1459,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Deathwing,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Arthas, HeroNames.Johanna, HeroNames.Muradin]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Arthas, HeroNames.Johanna, HeroNames.Muradin]),
     enemyHeroes: ([HeroNames.Raynor, HeroNames.Greymane, HeroNames.Valla,HeroNames.Zeratul, HeroNames.Tracer]),
     goodMaps:[MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.WarheadJuction],
     badMaps:[MapNames.BlackheartsBay,MapNames.DragonShire,MapNames.SkyTemple],
@@ -995,7 +1467,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Dehaka,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Abathur, HeroNames.Jaina, HeroNames.Hanzo, HeroNames.Maiev]),
+    skills: [], friendHeroes:   ([HeroNames.Abathur, HeroNames.Jaina, HeroNames.Hanzo, HeroNames.Maiev]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Valla, HeroNames.Raynor,HeroNames.SgtHammer, HeroNames.Lucio]),
     goodMaps:[MapNames.BlackheartsBay,MapNames.BarxisHoldout,MapNames.CurssedHollow,MapNames.DragonShire,MapNames.GardenOfTerror,MapNames.SkyTemple,MapNames.TowersOfDoom,MapNames.WarheadJuction,],
     badMaps:[MapNames.VolkayaFoundry,MapNames.HamuraTemple],
@@ -1003,7 +1475,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Dva,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Garrosh, HeroNames.Maiev, HeroNames.Falstad, HeroNames.Deckard]),
+    skills: [], friendHeroes:   ([HeroNames.Garrosh, HeroNames.Maiev, HeroNames.Falstad, HeroNames.Deckard]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Malthael, HeroNames.Raynor,HeroNames.Kaelthas, HeroNames.Stukov]),
     goodMaps:[MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen,MapNames.TowersOfDoom,MapNames.VolkayaFoundry,],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.CurssedHollow,MapNames.HamuraTemple,],
@@ -1011,7 +1483,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Gazlowe,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Diablo, HeroNames.ETC, HeroNames.Jaina, HeroNames.Johanna, HeroNames.Kaelthas, HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Diablo, HeroNames.ETC, HeroNames.Jaina, HeroNames.Johanna, HeroNames.Kaelthas, HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Raynor, HeroNames.Lunara, HeroNames.Guldan,HeroNames.Chromie, HeroNames.Hanzo, HeroNames.LiMing]),
     goodMaps:[MapNames.AlteracPass,MapNames.BarxisHoldout,MapNames.SkyTemple,MapNames.InfernalShrines,MapNames.VolkayaFoundry,MapNames.WarheadJuction],
     badMaps:[MapNames.HamuraTemple,MapNames.TowersOfDoom],
@@ -1019,7 +1491,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Hogger,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Diablo, HeroNames.Sonya, HeroNames.Hanzo, HeroNames.LiMing, HeroNames.Stukov]),
+    skills: [], friendHeroes:   ([HeroNames.Diablo, HeroNames.Sonya, HeroNames.Hanzo, HeroNames.LiMing, HeroNames.Stukov]),
     enemyHeroes: ([HeroNames.Diablo, HeroNames.Malthael, HeroNames.Tychus,HeroNames.Lunara, HeroNames.Uther]),
     goodMaps:[MapNames.AlteracPass,MapNames.BlackheartsBay,MapNames.CurssedHollow,MapNames.DragonShire,MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.SkyTemple],
     badMaps:[MapNames.HamuraTemple],
@@ -1027,7 +1499,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Imperius,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Jaina, HeroNames.Fenix, HeroNames.Rehgar, HeroNames.Malganis, HeroNames.ETC, HeroNames.Yrel, HeroNames.Blaze]),
+    skills: [], friendHeroes:   ([HeroNames.Jaina, HeroNames.Fenix, HeroNames.Rehgar, HeroNames.Malganis, HeroNames.ETC, HeroNames.Yrel, HeroNames.Blaze]),
     enemyHeroes: ([HeroNames.Jaina, HeroNames.Raynor, HeroNames.SgtHammer,HeroNames.Zuljin, HeroNames.ETC,HeroNames.Lucio]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple],
     badMaps:[MapNames.BlackheartsBay,MapNames.GardenOfTerror,MapNames.SkyTemple,MapNames.TowersOfDoom],
@@ -1035,7 +1507,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Leoric,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Diablo, HeroNames.Orphea, HeroNames.Stukov]),
+    skills: [], friendHeroes:   ([HeroNames.Diablo, HeroNames.Orphea, HeroNames.Stukov]),
     enemyHeroes: ([HeroNames.Dehaka, HeroNames.Samuro, HeroNames.Tracer,HeroNames.Falstad, HeroNames.Ana]),
     goodMaps:[MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.VolkayaFoundry,MapNames.TowersOfDoom],
     badMaps:[MapNames.BarxisHoldout,MapNames.SkyTemple,MapNames.WarheadJuction],
@@ -1043,7 +1515,7 @@ export const fighters: Hero[] = [
   {
     name: HeroNames.Malthael,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Garrosh, HeroNames.Greymane,HeroNames.Tychus, HeroNames.Medivh, HeroNames.Ana, HeroNames.Medivh]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Garrosh, HeroNames.Greymane,HeroNames.Tychus, HeroNames.Medivh, HeroNames.Ana, HeroNames.Medivh]),
     enemyHeroes: ([HeroNames.Blaze, HeroNames.Falstad, HeroNames.Fenix,HeroNames.Lunara, HeroNames.Tracer, HeroNames.Valla]),
     goodMaps:[MapNames.BlackheartsBay,MapNames.DragonShire,MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TombOfTheSpiderQueen,MapNames.TowersOfDoom,MapNames.WarheadJuction],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.HamuraTemple],
@@ -1052,7 +1524,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Ragnaros,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Hanzo, HeroNames.Kaelthas,HeroNames.Ana]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Hanzo, HeroNames.Kaelthas,HeroNames.Ana]),
     enemyHeroes: ([HeroNames.Garrosh, HeroNames.Chen, HeroNames.Lunara,HeroNames.Jaina, HeroNames.Stukov]),
     goodMaps:[MapNames.BlackheartsBay,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TombOfTheSpiderQueen,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.TowersOfDoom],
@@ -1060,7 +1532,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Rexar,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Johanna, HeroNames.Jaina, HeroNames.Malfurion]),
+    skills: [], friendHeroes:   ([HeroNames.Johanna, HeroNames.Jaina, HeroNames.Malfurion]),
     enemyHeroes: ([HeroNames.Tyrael, HeroNames.Illidan, HeroNames.Qhira,HeroNames.Zeratul, HeroNames.Kharazim]),
     goodMaps:[MapNames.BarxisHoldout,MapNames.DragonShire],
     badMaps:[MapNames.AlteracPass,MapNames.BattelfieldOfEternity,MapNames.BlackheartsBay,MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.HamuraTemple,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TowersOfDoom,MapNames.VolkayaFoundry,MapNames.WarheadJuction],
@@ -1068,7 +1540,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Sonya,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Muradin, HeroNames.Jaina, HeroNames.Tracer, HeroNames.Medivh, HeroNames.Rehgar]),
+    skills: [], friendHeroes:   ([HeroNames.Muradin, HeroNames.Jaina, HeroNames.Tracer, HeroNames.Medivh, HeroNames.Rehgar]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Leoric, HeroNames.Sylvanas,HeroNames.Tychus, HeroNames.Brightwing]),
     goodMaps:[MapNames.BlackheartsBay,MapNames.GardenOfTerror,MapNames.InfernalShrines],
     badMaps:[MapNames.HamuraTemple,MapNames.TowersOfDoom],
@@ -1076,7 +1548,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Thrall,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Diablo, HeroNames.Fenix, HeroNames.Chromie, HeroNames.Rehgar]),
+    skills: [], friendHeroes:   ([HeroNames.Diablo, HeroNames.Fenix, HeroNames.Chromie, HeroNames.Rehgar]),
     enemyHeroes: ([HeroNames.Johanna, HeroNames.Arthas, HeroNames.Kaelthas,HeroNames.Lunara, HeroNames.Malfurion]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple,MapNames.TowersOfDoom,MapNames.VolkayaFoundry],
     badMaps:[MapNames.BlackheartsBay,MapNames.GardenOfTerror,MapNames.TombOfTheSpiderQueen],
@@ -1084,7 +1556,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Varian,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.ETC, HeroNames.Blaze, HeroNames.LiMing, HeroNames.Tyrande]),
+    skills: [], friendHeroes:   ([HeroNames.ETC, HeroNames.Blaze, HeroNames.LiMing, HeroNames.Tyrande]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Arthas, HeroNames.Lunara,HeroNames.Medivh, HeroNames.Rehgar]),
     goodMaps:[MapNames.BlackheartsBay,MapNames.BarxisHoldout,MapNames.DragonShire,MapNames.GardenOfTerror,MapNames.HamuraTemple,MapNames.TowersOfDoom,MapNames.VolkayaFoundry,MapNames.WarheadJuction],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.InfernalShrines,MapNames.SkyTemple],
@@ -1092,7 +1564,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Xul,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Medivh, HeroNames.Falstad, HeroNames.LiMing, HeroNames.Tyrande]),
+    skills: [], friendHeroes:   ([HeroNames.Medivh, HeroNames.Falstad, HeroNames.LiMing, HeroNames.Tyrande]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Johanna, HeroNames.Jaina,HeroNames.SgtHammer, HeroNames.Auriel]),
     goodMaps:[MapNames.BlackheartsBay,MapNames.CurssedHollow,MapNames.GardenOfTerror,MapNames.InfernalShrines,MapNames.SkyTemple,MapNames.TombOfTheSpiderQueen],
     badMaps:[MapNames.BattelfieldOfEternity,MapNames.BarxisHoldout,MapNames.HamuraTemple],
@@ -1100,7 +1572,7 @@ export const fighters: Hero[] = [
     {
     name: HeroNames.Yrel,
     role: roles.Fighter,
-    friendHeroes: ([HeroNames.Garrosh, HeroNames.Johanna, HeroNames.Maiev, HeroNames.Abathur]),
+    skills: [], friendHeroes:   ([HeroNames.Garrosh, HeroNames.Johanna, HeroNames.Maiev, HeroNames.Abathur]),
     enemyHeroes: ([HeroNames.ETC, HeroNames.Lucio, HeroNames.Raynor,HeroNames.Johanna]),
     goodMaps:[MapNames.BattelfieldOfEternity,MapNames.DragonShire,MapNames.InfernalShrines,MapNames.TombOfTheSpiderQueen],
     badMaps:[MapNames.HamuraTemple],

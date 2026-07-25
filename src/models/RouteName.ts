@@ -1,4 +1,5 @@
 export enum RouteName {
     
-    HomePage = 'HomePage'
+    HomePage = 'HomePage',
+    HeroPage = 'HeroPage'
 }
