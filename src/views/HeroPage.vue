@@ -43,7 +43,7 @@ const baseClass= 'max-w-300px min-w-300px  h-fit flex flex-col flex items-center
     <h1 class="text-xl text-center w-full border-b-3 border-gray-500">{{ hero.name }}</h1>
     <div class="flex grid grid-cols-4 gap-2 p-2 w-full">
           <BaseTooltip v-for="[skillName,icon] in Object.entries(iconBySkillName)" :key="skillName">
-      <img class="border-3 w-18 border-gray-500 cursor-pointer" :class="{ 'border-orange-400': hero?.skills?.includes(skillName as SkilsNames) }" :src="icon" alt=""  @click="toggleSkill(skillName)" />
+      <img class="border-3 w-18 border-gray-500 cursor-pointer" :class="{ 'border-orange-400': hero?.skills?.includes(skillName as SkilsNames) }" :src="icon" alt=""  @click="toggleSkill(skillName as SkilsNames)" />
       <template #content>
         {{ skillName }}
       </template>
@@ -52,7 +52,7 @@ const baseClass= 'max-w-300px min-w-300px  h-fit flex flex-col flex items-center
     </div>
      <div class="flex flex-wrap justify-center items-center gap-2">
     <BaseTooltip v-for="[name,icon] in Object.entries(iconByMapName)" :key="name">
-      <img class="border-3 border-gray-500 cursor-pointer" :class="{ 'border-orange-400': selectedMap === mapName }" :src="icon" alt=""  @click="selectedMap = mapName as MapNames" />
+      <img class="border-3 border-gray-500 cursor-pointer" :src="icon" alt=""   />
       <template #content>
         {{ name }}
       </template>
