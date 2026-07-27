@@ -21,7 +21,7 @@ const getHeroByName = (name: HeroNames) =>
   allHeroes.find((h) => h.name === name)!
 </script>
 <template>
-  <div class="text-xl shrink-0">{{ turn === 1 ? 'Ваш ход' : turn === 2 ? 'Ход бана' : 'Ход врага' }}</div>
+  <div class="text-xl shrink-0">{{ turn === 1 ? 'Ваш ход' : turn === 2 ? 'Ход врага' : 'Ход бана' }}</div>
         <div class="flex w-full items-center justify-center p-4 shrink-0">
     <dvi class="flex flex-col items-center justify-center w-full h-50  hover:bg-blue-300/60 transition-all" :class="{
      'bg-blue-300/70': turn === 1,

@@ -26,10 +26,10 @@ export default defineConfig(({ mode }) => {
             }
         },
         plugins: [vue(), UnoCSS(unoConfig)],
-        
         optimizeDeps: {
             include: ['maplibre-gl']
         }
     };
 });
 //  base: '/HotsOverley/',
+

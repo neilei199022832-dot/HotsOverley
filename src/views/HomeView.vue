@@ -16,6 +16,7 @@ import { useMagicKeys, whenever } from '@vueuse/core';
 import HeroTooltipInfo from '@/components/HeroTooltipInfo.vue';
 import router from '@/router';
 import { RouteName } from '@/models/RouteName';
+import ConstAutoChanger from '@/components/ConstAutoChanger.vue';
 
 const team = ref<Hero[]>([])
 const bans = ref<Hero[]>([])
@@ -99,8 +100,11 @@ const isTankAvailable = () => turn.value === 1 ? team.value.filter((h) => h.role
 </script>
 <template>
   
-  <div class="shrink-0 w-full">
+  <div class="shrink-0 w-full flex">
     <BaseFormInput name="query"/>
+    <div class="px-4 flex h-full items-center">
+    <ConstAutoChanger v-model:turn="turn" :current-round="team.length + bans.length + enemyTeam.length" />
+    </div>
   </div>
   <div class="flex gap-0 shrink-0">
     <BaseTooltip v-for="[mapName,icon] in Object.entries(iconByMapName)" :key="mapName">
