@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Checkbox } from '@ark-ui/vue/checkbox'
 import { CheckIcon } from 'lucide-vue-next'
-import styles from './checkbox.module.css'
 import { ref, watch } from 'vue'
 //3 Бан
 //1 Пик
@@ -51,8 +50,6 @@ watch(() => props.currentRound, () => {
 
 </script>
 <template>
-  {{ maxLength }}
-  {{ qeue[maxLength] }}
   
   <div v-for="(i,index) in qeue" class="p-2" :class="{'text-red': maxLength === index}" >{{ i }}</div>
   <div class="flex gap-2 w-84">
