@@ -51,7 +51,7 @@ watch(() => props.currentRound, () => {
 </script>
 <template>
   
-  <div v-for="(i,index) in qeue" class="p-2" :class="{'text-red': maxLength === index}" >{{ i }}</div>
+  
   <div class="flex gap-2 w-84">
   <Checkbox.Root v-model:checked="auto" class="Root">
     <Checkbox.Control class="Control !border-#6b95c2">
