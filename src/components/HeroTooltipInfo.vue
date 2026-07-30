@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { allHeroes, type Hero, type MapNames } from '@/utils/mockData';
+import { allHeroes, iconByMapName, type Hero, type MapNames } from '@/utils/mockData';
 import BaseHeroIcon from '@/components/BaseHeroIcon.vue';
 import BaseScroll from './BaseScroll.vue';
 
@@ -42,7 +42,20 @@ const getHeroByName = (name:string) => {
                   <BaseHeroIcon v-for="item in hero.vulnerableHeroes" :hero="getHeroByName(item)" :team="team" :enemyTeam="enemyTeam" :bans="bans" :selected-map="selectedMap" />
                 </div>
             </div>
+            <div class="flex flex-col gap-4">
+              <h1 class="text-2xl font-500 pt-2"> Хорошие карты</h1>
+              <div class="flex gap-x-2 gap-y-2 flex-wrap max-w-60">
+                <img v-for="item in hero.goodMaps" class="border-3 w-12 border-gray-500 cursor-pointer" :src="iconByMapName[item]" alt="" />
+              </div>
             </div>
+              <div class="flex flex-col gap-4">
+              <h1 class="text-2xl font-500 pt-2"> Плохие карты</h1>
+              <div class="flex gap-x-2  gap-y-2 flex-wrap max-w-60">
+                <img v-for="item in hero.badMaps" class="border-3 w-12 border-gray-500 cursor-pointer" :src="iconByMapName[item]" alt="" />
+              </div>
+            </div>
+            </div>
+            
             </BaseScroll>
             
 </template>

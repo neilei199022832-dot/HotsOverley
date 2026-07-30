@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
-import {  ref } from 'vue'
+import {  computed, ref } from 'vue'
 
-import { allHeroes, HeroNames, MapNames, type Hero } from '@/utils/mockData'
+import { allHeroes, HeroNames, MapNames, skillMap, SkilsNames, type Hero } from '@/utils/mockData'
 import { useClipboard } from '@vueuse/core'
+import { flat, unique } from 'radash'
 
 
 export const useAppStore = defineStore('app', () => {
@@ -40,13 +41,53 @@ export const useAppStore = defineStore('app', () => {
     localStorage.setItem('heroes', JSON.stringify(heroes.value))
   }
 
+  const heroSkillsMap = computed(() => {
+    const heroSkillsMap = heroes.value.reduce((acc,hero) => {
+        hero.skills.forEach(s => {
+          acc[s]? acc[s].push(hero.name) : acc[s] = [hero.name]
+        })
+        return acc
+      },{} as Record<SkilsNames,HeroNames[]>)
+
+    return Object.fromEntries(Object.entries(heroSkillsMap).map(([skill,heroes]) => {
+      return [
+        skill,
+        unique(heroes)
+      ]
+    }))
+  })
+
+  const setFriendAndEnemy = () => {
+      heroes.value.forEach(h => {
+        const friendHeroes:HeroNames[][] = []
+        const enemyHeroes:HeroNames[][] = []
+        console.log(h.skills)
+        h.skills.forEach((s) => {
+          const counter = skillMap[s].counter
+          console.log(counter)
+          const enemy = flat(counter.map(skill => heroSkillsMap.value[skill] ?? []))
+
+
+          const sinargy = skillMap[s].sinargy
+
+          const friend = flat(sinargy.map(skill => heroSkillsMap.value[skill]?? []) )
+
+          friendHeroes.push(friend)
+          enemyHeroes.push(enemy)
+        })
+        console.log(1)
+        h.friendHeroes = unique(flat(friendHeroes ?? []))
+        h.enemyHeroes = unique(flat(enemyHeroes ?? []))
+      })
+  }
+
 
   const setVulnerableHeroes = () => {
-  return allHeroes.map(hero => {
+  heroes.value = heroes.value.map(hero => {
     const vulnerableHeroes:HeroNames[] = []
     
     const addictedHeroes:HeroNames[] = []
-    allHeroes.forEach(h => {
+    heroes.value.forEach(h => {
 
 
       if (h.enemyHeroes?.includes(hero.name)) {
@@ -68,13 +109,20 @@ export const useAppStore = defineStore('app', () => {
   })
 }
 
+const initHeroCalcData = () => {
+    setFriendAndEnemy()
+    setVulnerableHeroes()
+}
+
   const heroes = ref<Hero[]>([])
  const init = () => {
+  heroes.value = allHeroes 
   const data = getDataFromLocalStorage()
   if(data) {
     heroes.value = data
+    initHeroCalcData()
   }else {
-    heroes.value = setVulnerableHeroes()
+    initHeroCalcData()
     setDataToLocalStorage()
   }
     
@@ -120,5 +168,5 @@ const getPickRate = (team: Hero[], enemy: Hero[], hero: Hero, selectedMap?: MapN
 
 init()
 
-  return { heroes,getPickRate,setDataToLocalStorage,removeLocalStorage,setDataFromClickBoard,copyData }
+  return { heroes,getPickRate,setDataToLocalStorage,removeLocalStorage,setDataFromClickBoard,copyData,initHeroCalcData }
 })

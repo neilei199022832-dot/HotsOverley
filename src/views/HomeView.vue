@@ -1,15 +1,14 @@
 <script lang="ts" setup>
 import { allHeroes, HeroNames, iconByMapName, iconByName, MapNames, roles, type Hero } from '@/utils/mockData';
-import { group, unique } from 'radash';
+import { group } from 'radash';
 import { ref } from 'vue';
-import { Sword,Shield,Handshake   } from 'lucide-vue-next';
-import BaseTooltip from '@/components/BaseTooltip.vue';
+
+import BasePopover from '@/components/BasePopover.vue';
 import BaseFormInput from '@/components/baseComponents/BaseFormInput.vue';
 import { useField, useForm } from 'vee-validate';
 import { useAppStore } from '@/stores/app';
 import { storeToRefs } from 'pinia';
 import HeroPool from '@/components/HeroPool.vue';
-import Progress from '@/components/Progress.vue';
 import BaseHeroIcon from '@/components/BaseHeroIcon.vue';
 import BaseScroll from '@/components/BaseScroll.vue';
 import { useMagicKeys, whenever } from '@vueuse/core';
@@ -106,13 +105,15 @@ const isTankAvailable = () => turn.value === 1 ? team.value.filter((h) => h.role
     <ConstAutoChanger v-model:turn="turn" :current-round="team.length + bans.length + enemyTeam.length" />
     </div>
   </div>
-  <div class="flex gap-0 shrink-0">
-    <BaseTooltip v-for="[mapName,icon] in Object.entries(iconByMapName)" :key="mapName">
+  <div class="flex gap-2 shrink-0">
+    <BasePopover type="tooltip" v-for="[mapName,icon] in Object.entries(iconByMapName)" :key="mapName">
+      <template #trigger>
       <img class="border-3 border-gray-500 cursor-pointer" :class="{ 'border-orange-400': selectedMap === mapName }" :src="icon" alt=""  @click="selectedMap = mapName as MapNames" />
+      </template>
       <template #content>
         {{ mapName }}
       </template>
-    </BaseTooltip>
+    </BasePopover>
     
 
   </div>
@@ -141,16 +142,20 @@ const isTankAvailable = () => turn.value === 1 ? team.value.filter((h) => h.role
         })
       
 
-        " @click.left="!team.includes(hero) && !enemyTeam.includes(hero) &&  onSelectHero(hero)"
-        @click.middle="router.push({ name: RouteName.HeroPage, params: { heroName: hero.name } })"
+        " 
+        @click.left="!team.includes(hero) && !enemyTeam.includes(hero) &&  onSelectHero(hero)"
+        @dblclick.="router.push({ name: RouteName.HeroPage, params: { heroName: hero.name } })"
         >
-            <BaseTooltip>
-              <BaseHeroIcon :hero="hero" :team="team" :enemyTeam="enemyTeam" :bans="bans" :query="value" :selected-map="selectedMap"/>
-         
-        <template #content>
-        <HeroTooltipInfo :hero="hero" :team="team" :bans="bans" :selectedMap="selectedMap" :enemyTeam="enemyTeam"/>
-        </template>
-        </BaseTooltip>
+        <BasePopover type="tooltip">
+          <template #trigger>
+            <div class="w-28 pt-4 pl-5">
+            <BaseHeroIcon :hero="hero" :team="team" :enemyTeam="enemyTeam" :bans="bans" :query="value" :selected-map="selectedMap"/>
+            </div>
+          </template>
+          <template #content>
+            <HeroTooltipInfo :hero="hero" :team="team" :bans="bans" :selectedMap="selectedMap" :enemyTeam="enemyTeam"/>
+            </template>
+        </BasePopover>
         </div>
         </div>
         </BaseScroll>

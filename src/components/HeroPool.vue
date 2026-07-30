@@ -2,7 +2,7 @@
 import { useAppStore } from '@/stores/app';
 import { allHeroes, HeroNames, iconByName, MapNames, type Hero } from '@/utils/mockData';
 import Progress from '@/components/Progress.vue';
-import BaseTooltip from '@/components/BaseTooltip.vue';
+import BasePopover from '@/components/BasePopover.vue';
 import BaseHeroIcon from '@/components/BaseHeroIcon.vue';
 import HeroTooltipInfo from './HeroTooltipInfo.vue';
 
@@ -32,19 +32,21 @@ const getHeroByName = (name: HeroNames) =>
 
 
       <div class="flex gap-15 w-full justify-between px-10">
-        <BaseTooltip v-for="hero in team" :key="hero.name" >
-          <BaseHeroIcon
-          :bans="bans" :hero="hero" 
-          :team="team" 
-          :enemyTeam="enemyTeam"  
-          :selected-map="selectedMap"
-          @click.stop="team = team.filter((t) => t.name !== hero.name)" :disable-opacity="true"> 
-            <Progress size="82px" color="#0e4a35" class="absolute top--1.3 left--1 rotate-180deg" :value="getPickRate(team,enemyTeam,hero,selectedMap)" :max="100" />
-          </BaseHeroIcon>
+        <BasePopover type="tooltip" v-for="hero in team" :key="hero.name" >
+          <template #trigger>
+            <BaseHeroIcon
+            :bans="bans" :hero="hero" 
+            :team="team" 
+            :enemyTeam="enemyTeam"  
+            :selected-map="selectedMap"
+            @click.stop="team = team.filter((t) => t.name !== hero.name)" :disable-opacity="true"> 
+              <Progress size="82px" color="#0e4a35" class="absolute top--1.3 left--1 rotate-180deg" :value="getPickRate(team,enemyTeam,hero,selectedMap)" :max="100" />
+            </BaseHeroIcon>
+          </template>
           <template #content> 
             <HeroTooltipInfo :hero="hero" :team="team" :bans="bans" :selectedMap="selectedMap" :enemyTeam="enemyTeam"/>
           </template>
-        </BaseTooltip>
+        </BasePopover>
 
       </div>
     </dvi>
@@ -61,20 +63,22 @@ const getHeroByName = (name: HeroNames) =>
 
       
           <div class="flex gap-5 w-full justify-between px-10">
-            <BaseTooltip v-for="hero in enemyTeam" :key="hero.name">
-              <BaseHeroIcon 
-              :bans="bans" 
-              :hero="hero" 
-              :team="team" 
-              :enemyTeam="enemyTeam"  
-              :selected-map="selectedMap"
-              @click.stop="enemyTeam = enemyTeam.filter((t) => t.name !== hero.name)" :disable-opacity="true">
-                <Progress size="82px" color="#6d131e" class="absolute top--1.3 left--1 rotate-180deg" :value="getPickRate(enemyTeam,team,hero,selectedMap)" :max="100" />            
-              </BaseHeroIcon>
+            <BasePopover type="tooltip" v-for="hero in enemyTeam" :key="hero.name">
+              <template #trigger>
+                <BaseHeroIcon 
+                :bans="bans" 
+                :hero="hero" 
+                :team="team" 
+                :enemyTeam="enemyTeam"  
+                :selected-map="selectedMap"
+                @click.stop="enemyTeam = enemyTeam.filter((t) => t.name !== hero.name)" :disable-opacity="true">
+                  <Progress size="82px" color="#6d131e" class="absolute top--1.3 left--1 rotate-180deg" :value="getPickRate(enemyTeam,team,hero,selectedMap)" :max="100" />            
+                </BaseHeroIcon>
+              </template>
                <template #content>
                 <HeroTooltipInfo :hero="hero" :team="team" :bans="bans" :selectedMap="selectedMap" :enemyTeam="enemyTeam"/>
                </template>
-            </BaseTooltip>
+            </BasePopover>
             
 
       </div>
