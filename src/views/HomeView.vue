@@ -11,7 +11,7 @@ import { storeToRefs } from 'pinia';
 import HeroPool from '@/components/HeroPool.vue';
 import BaseHeroIcon from '@/components/BaseHeroIcon.vue';
 import BaseScroll from '@/components/BaseScroll.vue';
-import { useMagicKeys, whenever } from '@vueuse/core';
+import { useDebounceFn, useMagicKeys, whenever } from '@vueuse/core';
 import HeroTooltipInfo from '@/components/HeroTooltipInfo.vue';
 import router from '@/router';
 import { RouteName } from '@/models/RouteName';
@@ -92,6 +92,11 @@ const enterHandler =() => {
   
 }
 
+const selectHero = useDebounceFn((hero: Hero) => {
+  
+  !team.value.includes(hero) && !enemyTeam.value.includes(hero) &&  onSelectHero(hero)
+},200)
+
 const isSupportAvailable = () => turn.value === 1 ? team.value.filter((h) => h.role === roles.Support).length < 1: turn.value === 2 ? enemyTeam.value.filter((h) => h.role === roles.Support).length < 1 : true
 const isHealerAvailable = () => turn.value === 1 ? team.value.filter((h) => h.role === roles.Healer).length < 1: turn.value === 2 ? enemyTeam.value.filter((h) => h.role === roles.Healer).length < 1 : true
 const isTankAvailable = () => turn.value === 1 ? team.value.filter((h) => h.role === roles.Tank).length < 1: turn.value === 2 ? enemyTeam.value.filter((h) => h.role === roles.Tank).length < 1 : true
@@ -143,7 +148,7 @@ const isTankAvailable = () => turn.value === 1 ? team.value.filter((h) => h.role
       
 
         " 
-        @click.left="!team.includes(hero) && !enemyTeam.includes(hero) &&  onSelectHero(hero)"
+        @click.left="selectHero(hero)"
         @dblclick.="router.push({ name: RouteName.HeroPage, params: { heroName: hero.name } })"
         >
         <BasePopover type="tooltip">
