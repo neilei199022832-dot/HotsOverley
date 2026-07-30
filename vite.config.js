@@ -25,9 +25,11 @@ export default defineConfig(({ mode }) => {
                 '@': resolve(__dirname, './src')
             }
         },
+        base: '/HotsOverley/',
         plugins: [vue(), UnoCSS(unoConfig)],
         optimizeDeps: {
             include: ['maplibre-gl']
         }
     };
 });
+//base: '/HotsOverley/',

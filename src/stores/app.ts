@@ -19,7 +19,6 @@ export const useAppStore = defineStore('app', () => {
        heroes.value = JSON.parse(data)
        setDataToLocalStorage()
     } catch (error) {
-      console.log(error)
     }
 
     }
@@ -58,13 +57,12 @@ export const useAppStore = defineStore('app', () => {
   })
 
   const setFriendAndEnemy = () => {
+    console.log(heroSkillsMap.value)
       heroes.value.forEach(h => {
         const friendHeroes:HeroNames[][] = []
         const enemyHeroes:HeroNames[][] = []
-        console.log(h.skills)
         h.skills.forEach((s) => {
           const counter = skillMap[s].counter
-          console.log(counter)
           const enemy = flat(counter.map(skill => heroSkillsMap.value[skill] ?? []))
 
 
@@ -75,9 +73,10 @@ export const useAppStore = defineStore('app', () => {
           friendHeroes.push(friend)
           enemyHeroes.push(enemy)
         })
-        console.log(1)
-        h.friendHeroes = unique(flat(friendHeroes ?? []))
-        h.enemyHeroes = unique(flat(enemyHeroes ?? []))
+        
+        h.name === HeroNames.LieutenantMorales && console.log(enemyHeroes)
+        h.friendHeroes = unique(flat(friendHeroes ?? [])).filter(f => f !== h.name)
+        h.enemyHeroes = unique(flat(enemyHeroes ?? [])).filter(f => f !== h.name)
       })
   }
 

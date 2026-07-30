@@ -83,7 +83,6 @@ whenever(() => shift_w.value, () => turn.value = 2)
 whenever(() => shift_r.value, () => turn.value = 3)
 
 const enterHandler =() => {
-  console.log(value.value)
   if(!value.value) return
 
   const hero = allHeroes.find((h) => h.name.toLowerCase().includes(value.value!.toLowerCase()))

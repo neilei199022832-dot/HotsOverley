@@ -32,7 +32,6 @@ watch(() => props.currentRound, () => {
   if(maxLength.value === qeue.length ) {
     return
   }
-  console.log(maxLength.value );
   const currentTurn = qeue[maxLength.value]
   
   if(currentTurn === 3) {
