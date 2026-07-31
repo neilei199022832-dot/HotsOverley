@@ -14,8 +14,23 @@ export const useAppStore = defineStore('app', () => {
     try {
       const data = await navigator.clipboard.readText()
       if (!data) return
-      heroes.value = JSON.parse(data)
+      const parsedData = JSON.parse(data) as Hero[]
+      heroes.value = heroes.value.map((h) => {
+        const inputHero = parsedData.find((f) => f.name === h.name)
+        return {
+          name: h.name,
+          role: h.role,
+          friendHeroes: unique([...(inputHero?.friendHeroes ?? []), ...h.friendHeroes ]),
+          enemyHeroes: unique([...(inputHero?.enemyHeroes ?? []), ...h.enemyHeroes ]),
+          goodMaps: unique([...(inputHero?.goodMaps ?? []), ...h.goodMaps ?? [] ]),
+          badMaps: unique([...(inputHero?.badMaps ?? []), ...h.badMaps ?? [] ]),
+          vulnerableHeroes: unique([...(inputHero?.vulnerableHeroes ?? []), ...h.vulnerableHeroes ?? [] ]),
+          skills: unique([...(inputHero?.skills ?? []), ...h.skills ?? [] ]),
+          addictedHeroes: unique([...(inputHero?.addictedHeroes ?? []), ...h.addictedHeroes ?? [] ]),
+        }
+      })
       setDataToLocalStorage()
+      init()
     } catch (error) {}
   }
 
